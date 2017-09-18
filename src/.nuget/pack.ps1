@@ -2,7 +2,6 @@ $path = '..\**\*.nuspec'
 $nuget = '.\NuGet.exe'
 $year = [System.DateTime]::Now.Year
 $specFiles = Get-ChildItem $path -Recurse
-Write-Host $specFiles
 
 foreach($file in $specFiles)
 {
