@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{88CFEC05-7756-4368-89C5-023EC95BDD99}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		..\appveyor.yml = ..\appveyor.yml
+		..\readme.md = ..\readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{AC621C07-B657-4004-BFD6-9604EA0C1CDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7AAE7240-C355-438A-9676-C8CCAE9BC337}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spk.Common.Helpers", "Spk.Common.Helpers\Spk.Common.Helpers.csproj", "{D24F4B7E-818C-4B91-9124-CC6CB6C2DC4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spk.Common.Tests.Validators", "Spk.Common.Tests.Validators\Spk.Common.Tests.Validators.csproj", "{525DD43D-7B96-4493-BF22-52ED1A1D22A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spk.Common.Validators", "Spk.Common.Validators\Spk.Common.Validators.csproj", "{1C00BC88-B91F-4854-B563-B9C5A1B5D00A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spk.Common.Tests.Helpers", "Spk.Common.Tests.Helpers\Spk.Common.Tests.Helpers.csproj", "{844DBC42-A9A4-48B9-B1B7-D8E24399FFB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D24F4B7E-818C-4B91-9124-CC6CB6C2DC4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D24F4B7E-818C-4B91-9124-CC6CB6C2DC4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D24F4B7E-818C-4B91-9124-CC6CB6C2DC4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D24F4B7E-818C-4B91-9124-CC6CB6C2DC4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{525DD43D-7B96-4493-BF22-52ED1A1D22A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{525DD43D-7B96-4493-BF22-52ED1A1D22A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{525DD43D-7B96-4493-BF22-52ED1A1D22A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{525DD43D-7B96-4493-BF22-52ED1A1D22A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C00BC88-B91F-4854-B563-B9C5A1B5D00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C00BC88-B91F-4854-B563-B9C5A1B5D00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C00BC88-B91F-4854-B563-B9C5A1B5D00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C00BC88-B91F-4854-B563-B9C5A1B5D00A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{844DBC42-A9A4-48B9-B1B7-D8E24399FFB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{844DBC42-A9A4-48B9-B1B7-D8E24399FFB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{844DBC42-A9A4-48B9-B1B7-D8E24399FFB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{844DBC42-A9A4-48B9-B1B7-D8E24399FFB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{525DD43D-7B96-4493-BF22-52ED1A1D22A5} = {AC621C07-B657-4004-BFD6-9604EA0C1CDF}
+		{844DBC42-A9A4-48B9-B1B7-D8E24399FFB2} = {AC621C07-B657-4004-BFD6-9604EA0C1CDF}
+	EndGlobalSection
+EndGlobal

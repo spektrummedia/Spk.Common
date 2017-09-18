@@ -1,0 +1,33 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+branches:
+  only:
+    - master
+
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+build:
+  project: src/Spk.Common.sln
+  publish_nuget_symbols: true     # generate and publish NuGet symbol packages
+  publish_nuget: true
+
+assembly_info:
+  patch: true
+  file: AssemblyInfo.cs
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+test:
+  assemblies:
+    - '**/*.Tests.Validators.dll'
+    - '**/*.Tests.Helpers.dll'
