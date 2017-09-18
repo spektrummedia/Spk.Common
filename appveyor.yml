@@ -1,6 +1,7 @@
 #---------------------------------#
 #      general configuration      #
 #---------------------------------#
+image: Visual Studio 2017
 
 branches:
   only:
