@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateTime\DateTimeExtensions.cs" />
     <Compile Include="IEnumerable\ExtractDuplicatesExtension.cs" />
     <Compile Include="IEnumerable\OfTypeExactExtension.cs" />
     <Compile Include="IEnumerable\WhereIfExtension.cs" />
