@@ -13,21 +13,12 @@ configuration: Release
 #       build configuration       #
 #---------------------------------#
 
-install:
-  - dotnet restore src
-
 build:
   project: src/Spk.Common.sln
-  publish_nuget_symbols: true
-  publish_nuget: true
 
 #---------------------------------#
 #       tests configuration       #
 #---------------------------------#
-
-test:
-  assemblies:
-    - '**/*.Tests.*.dll'
 
 #------------------------#
 #       deployment       #
