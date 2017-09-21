@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using Spk.Common.Helpers.IEnumerable;
+using Xunit;
 
 namespace Spk.Common.Tests.Helpers.IEnumerable
 {
     public class ExtractDuplicatesExtensionTests
     {
-        [Test]
+        [Fact]
         public void
             ExtractDuplicates_ShouldExtractGoodData_WhenDuplicatesFoundForPrimitiveTypes()
         {
             var source = new List<int> {1, 2, 3, 5, 5};
             var results = source.ExtractDuplicates();
-            Assert.That(results.Count(), Is.EqualTo(1));
-            Assert.That(results.First(), Is.EqualTo(5));
+            Assert.Equal(1, results.Count());
+            Assert.Equal(5, results.First());
         }
     }
 }

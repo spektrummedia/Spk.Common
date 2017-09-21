@@ -11,8 +11,7 @@ namespace Spk.Common.Validators.String
         /// </summary>
         public static bool IsValidUrl(this string input)
         {
-            Uri uriResult;
-            var createdUriIsValid = Uri.TryCreate(input, UriKind.Absolute, out uriResult);
+            var createdUriIsValid = Uri.TryCreate(input, UriKind.Absolute, out var uriResult);
             return createdUriIsValid && (uriResult.Scheme == Uri.UriSchemeHttp
                                          || uriResult.Scheme == Uri.UriSchemeHttps);
         }

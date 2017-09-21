@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using Spk.Common.Helpers.String;
+﻿using Spk.Common.Helpers.String;
+using Xunit;
 
 namespace Spk.Common.Tests.Helpers.String
 {
@@ -8,51 +8,51 @@ namespace Spk.Common.Tests.Helpers.String
     /// </summary>
     public class StringExtensionsTests
     {
-        [Test]
+        [Fact]
         public void IsNullorEmpty_ShouldReturnTrue_WhenNull()
         {
             string test = null;
-            Assert.IsTrue(test.IsNullOrEmpty());
+            Assert.True(test.IsNullOrEmpty());
         }
 
-        [Test]
+        [Fact]
         public void IsNullorEmpty_ShouldReturnTrue_WhenEmpty()
         {
-            Assert.IsTrue("".IsNullOrEmpty());
+            Assert.True("".IsNullOrEmpty());
         }
 
-        [Test]
+        [Fact]
         public void IsNullorEmpty_ShouldReturnFalse_WhenNotEmpty()
         {
-            Assert.IsFalse("test".IsNullOrEmpty());
+            Assert.False("test".IsNullOrEmpty());
         }
 
-        [Test]
+        [Fact]
         public void HtmlEncode_ShouldEncodeProperly()
         {
             var result = "<p>Hi!</p>".HtmlEncode();
-            Assert.That(result, Is.EqualTo("&lt;p&gt;Hi!&lt;/p&gt;"));
+            Assert.Equal("&lt;p&gt;Hi!&lt;/p&gt;", result);
         }
 
-        [Test]
+        [Fact]
         public void HtmlDecode_ShouldDecodeProperly()
         {
             var result = "&lt;p&gt;Hi!&lt;/p&gt;".HtmlDecode();
-            Assert.That(result, Is.EqualTo("<p>Hi!</p>"));
+            Assert.Equal("<p>Hi!</p>", result);
         }
 
-        [Test]
+        [Fact]
         public void UrlEncode_ShouldEncodeProperly()
         {
             var result = "test string".UrlEncode();
-            Assert.That(result, Is.EqualTo("test+string"));
+            Assert.Equal("test+string", result);
         }
 
-        [Test]
+        [Fact]
         public void UrlDecode_ShouldDecodeProperly()
         {
             var result = "test+string".UrlDecode();
-            Assert.That(result, Is.EqualTo("test string"));
+            Assert.Equal("test string", result);
         }
     }
 }

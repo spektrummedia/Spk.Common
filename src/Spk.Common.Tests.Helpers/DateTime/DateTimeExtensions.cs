@@ -1,16 +1,16 @@
 ﻿using System;
-using NUnit.Framework;
 using Spk.Common.Helpers.DateTime;
+using Xunit;
 
 namespace Spk.Common.Tests.Helpers.DateTime
 {
     public class DateTimeExtensions
     {
-        [Test]
+        [Fact]
         public void ToEpochTime_ShouldReturnValidValue()
         {
             var date = new System.DateTime(2014, 1, 1, 6, 0, 0);
-            Assert.That(date.ToEpochTime(), Is.EqualTo(1388556000));
+            Assert.Equal(1388556000, date.ToEpochTime());
         }
     }
 }
