@@ -12,6 +12,13 @@ namespace Spk.Common.Helpers.String
         public static bool IsNullOrEmpty(this string s) => string.IsNullOrEmpty(s);
 
         /// <summary>
+        /// Answer true if this string is either null or white spaces only.
+        /// </summary>
+        /// <param name="s">The string to check</param>
+        /// <returns></returns>
+        public static bool IsNullOrWhiteSpace(this string s) => string.IsNullOrWhiteSpace(s);
+
+        /// <summary>
         /// Answer true if this string is either null or empty.
         /// </summary>
         /// <param name="s">The string to check</param>
