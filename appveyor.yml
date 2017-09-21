@@ -11,7 +11,7 @@ build_script:
   - dotnet build
 
 test_script:
-  - dotnet test
+  - ps: gci -Directory -Path test | ForEach-Object {dotnet test $_.FullName}
 
 deploy:
   provider: NuGet
