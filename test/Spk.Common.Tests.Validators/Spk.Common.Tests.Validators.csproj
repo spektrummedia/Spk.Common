@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Spk.Common.Validators\Spk.Common.Validators.csproj" />
+      <ProjectReference Include="..\..\src\Spk.Common.Validators\Spk.Common.Validators.csproj" />
     </ItemGroup>
 
 </Project>

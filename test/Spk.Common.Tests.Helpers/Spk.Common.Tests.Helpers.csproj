@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Spk.Common.Helpers\Spk.Common.Helpers.csproj" />
+      <ProjectReference Include="..\..\src\Spk.Common.Helpers\Spk.Common.Helpers.csproj" />
     </ItemGroup>
 
 </Project>

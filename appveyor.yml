@@ -1,28 +1,17 @@
-#---------------------------------#
-#      general configuration      #
-#---------------------------------#
 image: Visual Studio 2017
 
 branches:
   only:
     - master
 
-configuration: Release
+install:
+  - dotnet restore
 
-#---------------------------------#
-#       build configuration       #
-#---------------------------------#
+build_script:
+  - dotnet build
 
-build:
-  project: src/Spk.Common.sln
-
-#---------------------------------#
-#       tests configuration       #
-#---------------------------------#
-
-#------------------------#
-#       deployment       #
-#------------------------#
+test_script:
+  - dotnet test
 
 deploy:
   provider: NuGet
