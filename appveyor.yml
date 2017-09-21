@@ -10,6 +10,9 @@ install:
 build_script:
   - dotnet build -c Release
 
+artifacts:
+  - path: '**\*.nupkg'
+
 test_script:
   - ps: gci -Directory -Path test | ForEach-Object {dotnet test -c Release $_.FullName}
 
