@@ -8,10 +8,10 @@ install:
   - dotnet restore
 
 build_script:
-  - dotnet build
+  - dotnet build -c Release
 
 test_script:
-  - ps: gci -Directory -Path test | ForEach-Object {dotnet test $_.FullName}
+  - ps: gci -Directory -Path test | ForEach-Object {dotnet test -c Release $_.FullName}
 
 deploy:
   provider: NuGet
