@@ -123,6 +123,7 @@ _TeamCity*
 
 # NCrunch
 _NCrunch_*
+*.ncrunch*
 .*crunch*.local.xml
 nCrunchTemp_*
 
