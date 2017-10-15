@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Spk.Common.Tests.Helpers.DateTime
 {
-    public class DateTimeExtensions
+    public class DateTimeExtensionsTests
     {
         [Fact]
         public void ToEpochTime_ShouldReturnValidValue()
