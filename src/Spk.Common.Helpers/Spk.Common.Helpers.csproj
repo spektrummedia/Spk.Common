@@ -6,5 +6,6 @@
         <Company>Spektrum Media</Company>
         <PackageIconUrl>https://avatars1.githubusercontent.com/u/13052913</PackageIconUrl>
         <RepositoryUrl>https://github.com/spektrumgeeks/Spk.Common</RepositoryUrl>
+        <Version>1.0.1</Version>
     </PropertyGroup>
 </Project>
