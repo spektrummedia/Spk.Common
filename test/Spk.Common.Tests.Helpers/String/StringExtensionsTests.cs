@@ -81,5 +81,29 @@ namespace Spk.Common.Tests.Helpers.String
         {
             Assert.Equal("test+string", "test string".UrlEncode());
         }
+
+        [Fact]
+        public void Truncate_ShouldBeEmpty_WhenMaxLengthIs0()
+        {
+            Assert.Equal(string.Empty, "test".Truncate(0));
+        }
+
+        [Fact]
+        public void Truncate_ShouldBeTruncateProperly()
+        {
+            Assert.Equal("te", "test".Truncate(2));
+        }
+
+        [Fact]
+        public void TruncateWithEllipsis_ShouldCountEllipsis()
+        {
+            Assert.Equal("...", "test".TruncateWithEllipsis(2));
+        }
+
+        [Fact]
+        public void TruncateWithEllipsis_ShouldBeTruncateProperly()
+        {
+            Assert.Equal("ab...", "abcdefghijk of test".TruncateWithEllipsis(5));
+        }
     }
 }

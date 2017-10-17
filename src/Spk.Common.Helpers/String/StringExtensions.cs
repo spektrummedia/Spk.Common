@@ -125,5 +125,26 @@ namespace Spk.Common.Helpers.String
                 .ToArray();
             return new string(chars).Normalize(NormalizationForm.FormC);
         }
+
+        /// <summary>
+        ///     Truncates a string to <paramref name="maxLength" />.
+        /// </summary>
+        /// <param name="s">The string to truncate</param>
+        /// <param name="maxLength">The length to truncate to</param>
+        public static string Truncate(this string s, int maxLength)
+        {
+            return s.IsNullOrEmpty() ? s : (s.Length > maxLength ? s.Remove(maxLength) : s);
+        }
+
+        /// <summary>
+        ///     Truncates a string to <paramref name="maxLength" />, addinge an ellipsis on the end in truncated.
+        /// </summary>
+        /// <param name="s">The string to truncate</param>
+        /// <param name="maxLength">The length to truncate to</param>
+        /// <returns></returns>
+        public static string TruncateWithEllipsis(this string s, int maxLength)
+        {
+            return s.IsNullOrEmpty() || s.Length <= maxLength ? s : Truncate(s, Math.Max(maxLength, 3) - 3) + "...";
+        }
     }
 }
