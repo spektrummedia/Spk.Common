@@ -40,6 +40,19 @@ namespace Spk.Common.Tests.Helpers.String
         }
 
         [Fact]
+        public void RemoveDiacritics_ShouldRemoveDiacritics()
+        {
+            Assert.Equal("aeio", "àèîô".RemoveDiacritics());
+        }
+
+        [Fact]
+        public void ToBoolean_ShouldConvertProperly()
+        {
+            Assert.True("true".ToBoolean());
+            Assert.False("false".ToBoolean());
+        }
+
+        [Fact]
         public void ToDecimal_ShouldConvertProperly()
         {
             Assert.Equal(42.01m, "42.01".ToDecimal());
@@ -58,13 +71,6 @@ namespace Spk.Common.Tests.Helpers.String
         }
 
         [Fact]
-        public void ToBoolean_ShouldConvertProperly()
-        {
-            Assert.True("true".ToBoolean());
-            Assert.False("false".ToBoolean());
-        }
-
-        [Fact]
         public void UrlDecode_ShouldDecodeProperly()
         {
             Assert.Equal("test string", "test+string".UrlDecode());
@@ -74,12 +80,6 @@ namespace Spk.Common.Tests.Helpers.String
         public void UrlEncode_ShouldEncodeProperly()
         {
             Assert.Equal("test+string", "test string".UrlEncode());
-        }
-
-        [Fact]
-        public void RemoveDiacritics_ShouldRemoveDiacritics()
-        {
-            Assert.Equal("aeio", "àèîô".RemoveDiacritics());
         }
     }
 }
