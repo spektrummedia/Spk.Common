@@ -75,5 +75,11 @@ namespace Spk.Common.Tests.Helpers.String
         {
             Assert.Equal("test+string", "test string".UrlEncode());
         }
+
+        [Fact]
+        public void RemoveDiacritics_ShouldRemoveDiacritics()
+        {
+            Assert.Equal("aeio", "àèîô".RemoveDiacritics());
+        }
     }
 }
