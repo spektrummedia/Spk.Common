@@ -13,7 +13,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         {
             var source = new List<int> {1, 2, 3, 5, 5};
             var results = source.ExtractDuplicates();
-            Assert.Equal(1, results.Count());
+            Assert.Single(results);
             Assert.Equal(5, results.First());
         }
     }
