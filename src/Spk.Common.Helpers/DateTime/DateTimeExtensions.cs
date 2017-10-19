@@ -25,5 +25,15 @@ namespace Spk.Common.Helpers.DateTime
         {
             return dt.HasValue ? (long?) ToEpochTime(dt.Value) : null;
         }
+
+        /// <summary>
+        ///     Returns a boolean if a given date is a working day.
+        /// </summary>
+        /// <param name="dt">The <see cref="System.DateTime" /> to check.</param>
+        /// <returns></returns>
+        public static bool IsWorkingDay(this System.DateTime date)
+        {
+            return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
+        }
     }
 }
