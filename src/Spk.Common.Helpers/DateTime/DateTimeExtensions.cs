@@ -13,7 +13,7 @@ namespace Spk.Common.Helpers.DateTime
         /// <returns></returns>
         public static long ToEpochTime(this System.DateTime dt)
         {
-            return (long) (dt - Epoch).TotalSeconds;
+            return (long)(dt - Epoch).TotalSeconds;
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Spk.Common.Helpers.DateTime
         /// <returns></returns>
         public static long? ToEpochTime(this System.DateTime? dt)
         {
-            return dt.HasValue ? (long?) ToEpochTime(dt.Value) : null;
+            return dt.HasValue ? (long?)ToEpochTime(dt.Value) : null;
         }
 
         /// <summary>
@@ -35,5 +35,12 @@ namespace Spk.Common.Helpers.DateTime
         {
             return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
         }
+
+        /// <summary>
+        ///     Returns a boolean if a given date is weekend.
+        /// </summary>
+        /// <param name="dt">The <see cref="System.DateTime" /> to check.</param>
+        /// <returns></returns>
+        public static bool IsWeekend(this System.DateTime date) => !IsWorkingDay(date);
     }
 }

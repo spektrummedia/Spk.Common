@@ -31,5 +31,24 @@ namespace Spk.Common.Tests.Helpers.DateTime
             Assert.False(new System.DateTime(2018, 1, 6).IsWorkingDay());
             Assert.False(new System.DateTime(2018, 1, 7).IsWorkingDay());
         }
+
+        [Fact]
+        public void IsWeekend_ShouldReturnFalse_WhenWorkingDay()
+        {
+            // 2018/01/01 is a monday
+            Assert.False(new System.DateTime(2018, 1, 1).IsWeekend());
+            Assert.False(new System.DateTime(2018, 1, 2).IsWeekend());
+            Assert.False(new System.DateTime(2018, 1, 3).IsWeekend());
+            Assert.False(new System.DateTime(2018, 1, 4).IsWeekend());
+            Assert.False(new System.DateTime(2018, 1, 5).IsWeekend());
+        }
+
+        [Fact]
+        public void IsWeekend_ShouldReturnTrue_WhenNotWorkingDay()
+        {
+            // 2018/01/06 is saturday
+            Assert.True(new System.DateTime(2018, 1, 6).IsWeekend());
+            Assert.True(new System.DateTime(2018, 1, 7).IsWeekend());
+        }
     }
 }
