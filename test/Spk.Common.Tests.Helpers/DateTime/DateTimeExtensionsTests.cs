@@ -50,5 +50,35 @@ namespace Spk.Common.Tests.Helpers.DateTime
             Assert.True(new System.DateTime(2018, 1, 6).IsWeekend());
             Assert.True(new System.DateTime(2018, 1, 7).IsWeekend());
         }
+
+        [Fact]
+        public void NextWorkday_ShouldReturnMonday_WhenSunday()
+        {
+            // 2018/01/07 is sunday
+            Assert.Equal(
+                new System.DateTime(2018, 1, 7).NextWorkday(),
+                new System.DateTime(2018, 1, 8)
+            );
+        }
+
+        [Fact]
+        public void NextWorkday_ShouldReturnMonday_WhenSaturday()
+        {
+            // 2018/01/06 is saturday
+            Assert.Equal(
+                new System.DateTime(2018, 1, 6).NextWorkday(),
+                new System.DateTime(2018, 1, 8)
+            );
+        }
+
+        [Fact]
+        public void NextWorkday_ShouldReturnMonday_WhenMonday()
+        {
+            // 2018/01/08 is monday
+            Assert.Equal(
+                new System.DateTime(2018, 1, 8).NextWorkday(),
+                new System.DateTime(2018, 1, 8)
+            );
+        }
     }
 }

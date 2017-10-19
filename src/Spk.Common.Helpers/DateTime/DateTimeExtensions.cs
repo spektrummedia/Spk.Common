@@ -42,5 +42,19 @@ namespace Spk.Common.Helpers.DateTime
         /// <param name="dt">The <see cref="System.DateTime" /> to check.</param>
         /// <returns></returns>
         public static bool IsWeekend(this System.DateTime date) => !IsWorkingDay(date);
+
+        /// <summary>
+        ///     Returns the next workday of if a date is on the weekend.
+        ///     Returns current day if it is a workday.
+        /// </summary>
+        /// <param name="dt">The <see cref="System.DateTime" /> to check.</param>
+        /// <returns></returns>
+        public static System.DateTime NextWorkday(this System.DateTime date)
+        {
+            var nextDay = date;
+            while (!nextDay.IsWorkingDay())
+                nextDay = nextDay.AddDays(1);
+            return nextDay;
+        }
     }
 }
