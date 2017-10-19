@@ -22,7 +22,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         {
             var data = new List<string> {"test", "data", "halleyhop", "blabla"};
             var result = data.WhereIf(data.Count == 4, x => x.Equals("test"));
-            Assert.Equal(1, result.Count());
+            Assert.Single(result);
             Assert.Equal("test", result.First());
         }
 
