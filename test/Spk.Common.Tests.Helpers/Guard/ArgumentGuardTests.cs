@@ -10,6 +10,5 @@ namespace Spk.Common.Tests.Helpers.Guard
 {
     public partial class ArgumentGuardTests
     {
-
     }
 }

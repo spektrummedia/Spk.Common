@@ -25,7 +25,7 @@ namespace Spk.Common.Tests.Helpers.Guard
             [Theory]
             [InlineData(1, 2)]
             [InlineData(-1231, -1230)]
-            public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+            public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                 double argument,
                 double target)
             {
@@ -52,7 +52,7 @@ namespace Spk.Common.Tests.Helpers.Guard
             [Theory]
             [InlineData(1, 2)]
             [InlineData(-1231, -1230)]
-            public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+            public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                 float argument,
                 double target)
             {
@@ -79,7 +79,7 @@ namespace Spk.Common.Tests.Helpers.Guard
             [Theory]
             [InlineData(1, 2)]
             [InlineData(-1231, -1230)]
-            public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+            public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                 decimal argument,
                 double target)
             {
@@ -106,7 +106,7 @@ namespace Spk.Common.Tests.Helpers.Guard
             [Theory]
             [InlineData(1, 2)]
             [InlineData(-1231, -1230)]
-            public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+            public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                 short argument,
                 double target)
             {
@@ -133,7 +133,7 @@ namespace Spk.Common.Tests.Helpers.Guard
             [Theory]
             [InlineData(1, 2)]
             [InlineData(-1231, -1230)]
-            public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+            public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                 int argument,
                 double target)
             {
@@ -160,7 +160,7 @@ namespace Spk.Common.Tests.Helpers.Guard
             [Theory]
             [InlineData(1, 2)]
             [InlineData(-1231, -1230)]
-            public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+            public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                 long argument,
                 double target)
             {
@@ -185,7 +185,7 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             [Theory]
             [InlineData(1, 2)]
-            public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+            public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                 ushort argument,
                 double target)
             {
@@ -210,7 +210,7 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             [Theory]
             [InlineData(1, 2)]
-            public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+            public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                 uint argument,
                 double target)
             {
@@ -235,7 +235,7 @@ namespace Spk.Common.Tests.Helpers.Guard
 
                 [Theory]
                 [InlineData(1, 2)]
-                public void GuardIsWithinRange_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
+                public void GuardIsGreaterThanOrEqualTo_ShouldThrow_WhenArgumentIsNotGreaterThanTarget(
                     ulong argument,
                     double target)
                 {
