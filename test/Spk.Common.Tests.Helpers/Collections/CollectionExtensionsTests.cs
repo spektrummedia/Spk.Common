@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Shouldly;
 using Spk.Common.Helpers.Collection;
 using Xunit;
@@ -10,8 +10,22 @@ namespace Spk.Common.Tests.Helpers.Collections
         [Fact]
         public void SynchronizeWith_ShouldAddMissingItems()
         {
-            var target = new List<int> { 1, 3, 5, 7, 9 };
-            var source = new List<int> { 9, 2, 4, 6, 8 };
+            var target = new List<int>
+            {
+                1,
+                3,
+                5,
+                7,
+                9
+            };
+            var source = new List<int>
+            {
+                9,
+                2,
+                4,
+                6,
+                8
+            };
 
             target.SynchronizeWith(source);
 

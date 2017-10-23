@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Spk.Common.Helpers.Guard;
@@ -77,7 +77,8 @@ namespace Spk.Common.Helpers.Collection
             {
                 var targetItem = Target.ElementAt(i);
                 var foundInSource = false;
-                var sourceItem = sourceWorkingList.FirstOrDefault(src => foundInSource = MatchPredicate(src, targetItem));
+                var sourceItem =
+                    sourceWorkingList.FirstOrDefault(src => foundInSource = MatchPredicate(src, targetItem));
                 if (foundInSource)
                 {
                     UpdateAction?.Invoke(sourceItem, targetItem);
@@ -96,7 +97,8 @@ namespace Spk.Common.Helpers.Collection
             {
                 if (NewItemsMapper == null)
                 {
-                    throw new InvalidOperationException("NewItemsMapper not set. Please set it by calling MapNewItemsUsing");
+                    throw new InvalidOperationException(
+                        "NewItemsMapper not set. Please set it by calling MapNewItemsUsing");
                 }
 
                 var insertedItem = NewItemsMapper(sourceItem);
@@ -108,16 +110,18 @@ namespace Spk.Common.Helpers.Collection
 
     public static class CollectionExtensions
     {
-        public static void SynchronizeWith<T>(this ICollection<T> target, IEnumerable<T> source, Action<CollectionSynchronization<T>> config = null)
+        public static void SynchronizeWith<T>(this ICollection<T> target, IEnumerable<T> source,
+            Action<CollectionSynchronization<T>> config = null)
         {
             var sync = new CollectionSynchronization<T>(source, target);
             config?.Invoke(sync);
             sync.Execute();
         }
 
-        public static void SynchronizeWith<TSource, TTarget>(this ICollection<TTarget> target, IEnumerable<TSource> source, Action<CollectionSynchronization<TSource, TTarget>> config)
+        public static void SynchronizeWith<TSource, TTarget>(this ICollection<TTarget> target,
+            IEnumerable<TSource> source, Action<CollectionSynchronization<TSource, TTarget>> config)
         {
-            var sync = new CollectionSynchronization<TSource,TTarget>(source, target);
+            var sync = new CollectionSynchronization<TSource, TTarget>(source, target);
             config(sync);
             sync.Execute();
         }

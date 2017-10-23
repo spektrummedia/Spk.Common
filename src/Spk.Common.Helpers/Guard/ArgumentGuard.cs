@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.RegularExpressions;
 using Spk.Common.Helpers.String;
 
@@ -22,14 +22,15 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static double GuardIsWithinRange(
-            this double argument, 
-            double lower, 
-            double upper, 
+            this double argument,
+            double lower,
+            double upper,
             string paramName)
         {
             if (argument < lower || argument > upper)
             {
-                throw new ArgumentOutOfRangeException(paramName, $"Must be in the following range : {lower} to {upper}");
+                throw new ArgumentOutOfRangeException(paramName,
+                    $"Must be in the following range : {lower} to {upper}");
             }
             return argument;
         }
@@ -50,7 +51,7 @@ namespace Spk.Common.Helpers.Guard
             double upper,
             string paramName)
         {
-            return (float) ((double)argument).GuardIsWithinRange(lower, upper, paramName);
+            return (float)((double)argument).GuardIsWithinRange(lower, upper, paramName);
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace Spk.Common.Helpers.Guard
             double upper,
             string paramName)
         {
-            return (decimal) ((double)argument).GuardIsWithinRange(lower, upper, paramName);
+            return (decimal)((double)argument).GuardIsWithinRange(lower, upper, paramName);
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace Spk.Common.Helpers.Guard
             double upper,
             string paramName)
         {
-            return (short) ((double)argument).GuardIsWithinRange(lower, upper, paramName);
+            return (short)((double)argument).GuardIsWithinRange(lower, upper, paramName);
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace Spk.Common.Helpers.Guard
             double upper,
             string paramName)
         {
-            return (int) ((double)argument).GuardIsWithinRange(lower, upper, paramName);
+            return (int)((double)argument).GuardIsWithinRange(lower, upper, paramName);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Spk.Common.Helpers.Guard
             double upper,
             string paramName)
         {
-            return (long) ((double)argument).GuardIsWithinRange(lower, upper, paramName);
+            return (long)((double)argument).GuardIsWithinRange(lower, upper, paramName);
         }
 
         /// <summary>
@@ -145,7 +146,7 @@ namespace Spk.Common.Helpers.Guard
             double upper,
             string paramName)
         {
-            return (ushort) ((double)argument).GuardIsWithinRange(lower, upper, paramName);
+            return (ushort)((double)argument).GuardIsWithinRange(lower, upper, paramName);
         }
 
         /// <summary>
@@ -164,7 +165,7 @@ namespace Spk.Common.Helpers.Guard
             double upper,
             string paramName)
         {
-            return (uint) ((double)argument).GuardIsWithinRange(lower, upper, paramName);
+            return (uint)((double)argument).GuardIsWithinRange(lower, upper, paramName);
         }
 
         /// <summary>
@@ -183,7 +184,7 @@ namespace Spk.Common.Helpers.Guard
             double upper,
             string paramName)
         {
-            return (ulong) ((double)argument).GuardIsWithinRange(lower, upper, paramName);
+            return (ulong)((double)argument).GuardIsWithinRange(lower, upper, paramName);
         }
 
         #endregion
@@ -199,8 +200,8 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static double GuardIsGreaterThan(
-            this double argument, 
-            double target, 
+            this double argument,
+            double target,
             string paramName)
         {
             if (argument <= target)
@@ -220,11 +221,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static float GuardIsGreaterThan(
-            this float argument, 
-            double target, 
+            this float argument,
+            double target,
             string paramName)
         {
-            return (float) ((double) argument).GuardIsGreaterThan(target, paramName);
+            return (float)((double)argument).GuardIsGreaterThan(target, paramName);
         }
 
         /// <summary>
@@ -236,11 +237,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static decimal GuardIsGreaterThan(
-            this decimal argument, 
-            double target, 
+            this decimal argument,
+            double target,
             string paramName)
         {
-            return (decimal) ((double) argument).GuardIsGreaterThan(target, paramName);
+            return (decimal)((double)argument).GuardIsGreaterThan(target, paramName);
         }
 
         /// <summary>
@@ -252,11 +253,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static short GuardIsGreaterThan(
-            this short argument, 
-            double target, 
+            this short argument,
+            double target,
             string paramName)
         {
-            return (short) ((double) argument).GuardIsGreaterThan(target, paramName);
+            return (short)((double)argument).GuardIsGreaterThan(target, paramName);
         }
 
         /// <summary>
@@ -268,11 +269,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static int GuardIsGreaterThan(
-            this int argument, 
-            double target, 
+            this int argument,
+            double target,
             string paramName)
         {
-            return (int) ((double) argument).GuardIsGreaterThan(target, paramName);
+            return (int)((double)argument).GuardIsGreaterThan(target, paramName);
         }
 
         /// <summary>
@@ -284,11 +285,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static long GuardIsGreaterThan(
-            this long argument, 
-            double target, 
+            this long argument,
+            double target,
             string paramName)
         {
-            return (long) ((double) argument).GuardIsGreaterThan(target, paramName);
+            return (long)((double)argument).GuardIsGreaterThan(target, paramName);
         }
 
         /// <summary>
@@ -300,11 +301,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static ushort GuardIsGreaterThan(
-            this ushort argument, 
-            double target, 
+            this ushort argument,
+            double target,
             string paramName)
         {
-            return (ushort) ((double) argument).GuardIsGreaterThan(target, paramName);
+            return (ushort)((double)argument).GuardIsGreaterThan(target, paramName);
         }
 
         /// <summary>
@@ -316,11 +317,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static uint GuardIsGreaterThan(
-            this uint argument, 
-            double target, 
+            this uint argument,
+            double target,
             string paramName)
         {
-            return (uint) ((double) argument).GuardIsGreaterThan(target, paramName);
+            return (uint)((double)argument).GuardIsGreaterThan(target, paramName);
         }
 
         /// <summary>
@@ -332,11 +333,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static ulong GuardIsGreaterThan(
-            this ulong argument, 
-            double target, 
+            this ulong argument,
+            double target,
             string paramName)
         {
-            return (ulong) ((double) argument).GuardIsGreaterThan(target, paramName);
+            return (ulong)((double)argument).GuardIsGreaterThan(target, paramName);
         }
 
         #endregion
@@ -352,8 +353,8 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static double GuardIsGreaterThanOrEqualTo(
-            this double argument, 
-            double target, 
+            this double argument,
+            double target,
             string paramName)
         {
             if (argument < target)
@@ -373,11 +374,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static float GuardIsGreaterThanOrEqualTo(
-            this float argument, 
-            double target, 
+            this float argument,
+            double target,
             string paramName)
         {
-            return (float) ((double) argument).GuardIsGreaterThanOrEqualTo(target, paramName);
+            return (float)((double)argument).GuardIsGreaterThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -389,11 +390,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static decimal GuardIsGreaterThanOrEqualTo(
-            this decimal argument, 
-            double target, 
+            this decimal argument,
+            double target,
             string paramName)
         {
-            return (decimal) ((double) argument).GuardIsGreaterThanOrEqualTo(target, paramName);
+            return (decimal)((double)argument).GuardIsGreaterThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -405,11 +406,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static short GuardIsGreaterThanOrEqualTo(
-            this short argument, 
-            double target, 
+            this short argument,
+            double target,
             string paramName)
         {
-            return (short) ((double) argument).GuardIsGreaterThanOrEqualTo(target, paramName);
+            return (short)((double)argument).GuardIsGreaterThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -421,11 +422,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static int GuardIsGreaterThanOrEqualTo(
-            this int argument, 
-            double target, 
+            this int argument,
+            double target,
             string paramName)
         {
-            return (int) ((double) argument).GuardIsGreaterThanOrEqualTo(target, paramName);
+            return (int)((double)argument).GuardIsGreaterThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -437,11 +438,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static long GuardIsGreaterThanOrEqualTo(
-            this long argument, 
-            double target, 
+            this long argument,
+            double target,
             string paramName)
         {
-            return (long) ((double) argument).GuardIsGreaterThanOrEqualTo(target, paramName);
+            return (long)((double)argument).GuardIsGreaterThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -453,11 +454,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static ushort GuardIsGreaterThanOrEqualTo(
-            this ushort argument, 
-            double target, 
+            this ushort argument,
+            double target,
             string paramName)
         {
-            return (ushort) ((double) argument).GuardIsGreaterThanOrEqualTo(target, paramName);
+            return (ushort)((double)argument).GuardIsGreaterThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -469,11 +470,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static uint GuardIsGreaterThanOrEqualTo(
-            this uint argument, 
-            double target, 
+            this uint argument,
+            double target,
             string paramName)
         {
-            return (uint) ((double) argument).GuardIsGreaterThanOrEqualTo(target, paramName);
+            return (uint)((double)argument).GuardIsGreaterThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -485,11 +486,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static ulong GuardIsGreaterThanOrEqualTo(
-            this ulong argument, 
-            double target, 
+            this ulong argument,
+            double target,
             string paramName)
         {
-            return (ulong) ((double) argument).GuardIsGreaterThanOrEqualTo(target, paramName);
+            return (ulong)((double)argument).GuardIsGreaterThanOrEqualTo(target, paramName);
         }
 
         #endregion
@@ -505,8 +506,8 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static double GuardIsLessThan(
-            this double argument, 
-            double target, 
+            this double argument,
+            double target,
             string paramName)
         {
             if (argument >= target)
@@ -526,11 +527,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static float GuardIsLessThan(
-            this float argument, 
-            double target, 
+            this float argument,
+            double target,
             string paramName)
         {
-            return (float) ((double) argument).GuardIsLessThan(target, paramName);
+            return (float)((double)argument).GuardIsLessThan(target, paramName);
         }
 
         /// <summary>
@@ -542,11 +543,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static decimal GuardIsLessThan(
-            this decimal argument, 
-            double target, 
+            this decimal argument,
+            double target,
             string paramName)
         {
-            return (decimal) ((double) argument).GuardIsLessThan(target, paramName);
+            return (decimal)((double)argument).GuardIsLessThan(target, paramName);
         }
 
         /// <summary>
@@ -558,11 +559,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static short GuardIsLessThan(
-            this short argument, 
-            double target, 
+            this short argument,
+            double target,
             string paramName)
         {
-            return (short) ((double) argument).GuardIsLessThan(target, paramName);
+            return (short)((double)argument).GuardIsLessThan(target, paramName);
         }
 
         /// <summary>
@@ -574,11 +575,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static int GuardIsLessThan(
-            this int argument, 
-            double target, 
+            this int argument,
+            double target,
             string paramName)
         {
-            return (int) ((double) argument).GuardIsLessThan(target, paramName);
+            return (int)((double)argument).GuardIsLessThan(target, paramName);
         }
 
         /// <summary>
@@ -590,11 +591,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static long GuardIsLessThan(
-            this long argument, 
-            double target, 
+            this long argument,
+            double target,
             string paramName)
         {
-            return (long) ((double) argument).GuardIsLessThan(target, paramName);
+            return (long)((double)argument).GuardIsLessThan(target, paramName);
         }
 
         /// <summary>
@@ -606,11 +607,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static ushort GuardIsLessThan(
-            this ushort argument, 
-            double target, 
+            this ushort argument,
+            double target,
             string paramName)
         {
-            return (ushort) ((double) argument).GuardIsLessThan(target, paramName);
+            return (ushort)((double)argument).GuardIsLessThan(target, paramName);
         }
 
         /// <summary>
@@ -622,11 +623,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static uint GuardIsLessThan(
-            this uint argument, 
-            double target, 
+            this uint argument,
+            double target,
             string paramName)
         {
-            return (uint) ((double) argument).GuardIsLessThan(target, paramName);
+            return (uint)((double)argument).GuardIsLessThan(target, paramName);
         }
 
         /// <summary>
@@ -638,11 +639,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static ulong GuardIsLessThan(
-            this ulong argument, 
-            double target, 
+            this ulong argument,
+            double target,
             string paramName)
         {
-            return (ulong) ((double) argument).GuardIsLessThan(target, paramName);
+            return (ulong)((double)argument).GuardIsLessThan(target, paramName);
         }
 
         #endregion
@@ -658,8 +659,8 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static double GuardIsLessThanOrEqualTo(
-            this double argument, 
-            double target, 
+            this double argument,
+            double target,
             string paramName)
         {
             if (argument > target)
@@ -679,11 +680,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static float GuardIsLessThanOrEqualTo(
-            this float argument, 
-            double target, 
+            this float argument,
+            double target,
             string paramName)
         {
-            return (float) ((double) argument).GuardIsLessThanOrEqualTo(target, paramName);
+            return (float)((double)argument).GuardIsLessThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -695,11 +696,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static decimal GuardIsLessThanOrEqualTo(
-            this decimal argument, 
-            double target, 
+            this decimal argument,
+            double target,
             string paramName)
         {
-            return (decimal) ((double) argument).GuardIsLessThanOrEqualTo(target, paramName);
+            return (decimal)((double)argument).GuardIsLessThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -711,11 +712,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static short GuardIsLessThanOrEqualTo(
-            this short argument, 
-            double target, 
+            this short argument,
+            double target,
             string paramName)
         {
-            return (short) ((double) argument).GuardIsLessThanOrEqualTo(target, paramName);
+            return (short)((double)argument).GuardIsLessThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -727,11 +728,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static int GuardIsLessThanOrEqualTo(
-            this int argument, 
-            double target, 
+            this int argument,
+            double target,
             string paramName)
         {
-            return (int) ((double) argument).GuardIsLessThanOrEqualTo(target, paramName);
+            return (int)((double)argument).GuardIsLessThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -743,11 +744,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static long GuardIsLessThanOrEqualTo(
-            this long argument, 
-            double target, 
+            this long argument,
+            double target,
             string paramName)
         {
-            return (long) ((double) argument).GuardIsLessThanOrEqualTo(target, paramName);
+            return (long)((double)argument).GuardIsLessThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -759,11 +760,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static ushort GuardIsLessThanOrEqualTo(
-            this ushort argument, 
-            double target, 
+            this ushort argument,
+            double target,
             string paramName)
         {
-            return (ushort) ((double) argument).GuardIsLessThanOrEqualTo(target, paramName);
+            return (ushort)((double)argument).GuardIsLessThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -775,11 +776,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static uint GuardIsLessThanOrEqualTo(
-            this uint argument, 
-            double target, 
+            this uint argument,
+            double target,
             string paramName)
         {
-            return (uint) ((double) argument).GuardIsLessThanOrEqualTo(target, paramName);
+            return (uint)((double)argument).GuardIsLessThanOrEqualTo(target, paramName);
         }
 
         /// <summary>
@@ -791,11 +792,11 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static ulong GuardIsLessThanOrEqualTo(
-            this ulong argument, 
-            double target, 
+            this ulong argument,
+            double target,
             string paramName)
         {
-            return (ulong) ((double) argument).GuardIsLessThanOrEqualTo(target, paramName);
+            return (ulong)((double)argument).GuardIsLessThanOrEqualTo(target, paramName);
         }
 
         #endregion
@@ -809,8 +810,8 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static string GuardMatchesRegex(
-            this string argument, 
-            Regex regex, 
+            this string argument,
+            Regex regex,
             string paramName)
         {
             regex.GuardIsNotNull(nameof(regex));
@@ -832,8 +833,8 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static string GuardMatchesRegex(
-            this string argument, 
-            string regex, 
+            this string argument,
+            string regex,
             string paramName)
         {
             regex.GuardIsNotNull(nameof(regex));
@@ -851,8 +852,8 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static System.DateTime GuardIsLaterThan(
-            this System.DateTime argument, 
-            System.DateTime target, 
+            this System.DateTime argument,
+            System.DateTime target,
             string paramName)
         {
             if (argument <= target)
@@ -872,8 +873,8 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static System.DateTime GuardIsEarlierThan(
-            this System.DateTime argument, 
-            System.DateTime target, 
+            this System.DateTime argument,
+            System.DateTime target,
             string paramName)
         {
             if (argument >= target)
@@ -892,7 +893,7 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static string GuardIsNotNullOrWhiteSpace(
-            this string argument, 
+            this string argument,
             string paramName)
         {
             if (argument.IsNullOrWhiteSpace())
@@ -911,7 +912,7 @@ namespace Spk.Common.Helpers.Guard
         /// <exception cref="ArgumentNullException">When test fails</exception>
         /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
         public static T GuardIsNotNull<T>(
-            this T argument, 
+            this T argument,
             string paramName)
         {
             if (ReferenceEquals(argument, null))

@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using Shouldly;
 using Spk.Common.Helpers.Guard;
 using Xunit;
+
 // ReSharper disable InconsistentNaming
 
 namespace Spk.Common.Tests.Helpers.Guard
@@ -36,11 +37,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             {
                 Assert.Throws<ArgumentOutOfRangeException>(
-                    nameof(argument), 
-                    () =>
-                    {
-                        argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                    });
+                    nameof(argument),
+                    () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
             }
         }
 
@@ -72,11 +70,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             {
                 Assert.Throws<ArgumentOutOfRangeException>(
-                    nameof(argument), 
-                    () =>
-                    {
-                        argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                    });
+                    nameof(argument),
+                    () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
             }
         }
 
@@ -108,11 +103,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             {
                 Assert.Throws<ArgumentOutOfRangeException>(
-                    nameof(argument), 
-                    () =>
-                    {
-                        argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                    });
+                    nameof(argument),
+                    () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
             }
         }
 
@@ -144,11 +136,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             {
                 Assert.Throws<ArgumentOutOfRangeException>(
-                    nameof(argument), 
-                    () =>
-                    {
-                        argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                    });
+                    nameof(argument),
+                    () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
             }
         }
 
@@ -180,11 +169,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             {
                 Assert.Throws<ArgumentOutOfRangeException>(
-                    nameof(argument), 
-                    () =>
-                    {
-                        argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                    });
+                    nameof(argument),
+                    () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
             }
         }
 
@@ -216,11 +202,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             {
                 Assert.Throws<ArgumentOutOfRangeException>(
-                    nameof(argument), 
-                    () =>
-                    {
-                        argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                    });
+                    nameof(argument),
+                    () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
             }
         }
 
@@ -250,11 +233,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             {
                 Assert.Throws<ArgumentOutOfRangeException>(
-                    nameof(argument), 
-                    () =>
-                    {
-                        argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                    });
+                    nameof(argument),
+                    () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
             }
         }
 
@@ -284,11 +264,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
             {
                 Assert.Throws<ArgumentOutOfRangeException>(
-                    nameof(argument), 
-                    () =>
-                    {
-                        argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                    });
+                    nameof(argument),
+                    () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
             }
 
             public class GuardIsWithinRange_ulong
@@ -317,11 +294,8 @@ namespace Spk.Common.Tests.Helpers.Guard
 
                 {
                     Assert.Throws<ArgumentOutOfRangeException>(
-                        nameof(argument), 
-                        () =>
-                        {
-                            argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument));
-                        });
+                        nameof(argument),
+                        () => { argument.GuardIsWithinRange(lowerBound, upperBound, nameof(argument)); });
                 }
             }
         }
