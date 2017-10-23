@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using Shouldly;
 using Spk.Common.Helpers.Guard;
 using Xunit;
+
 // ReSharper disable InconsistentNaming
 
 namespace Spk.Common.Tests.Helpers.Guard

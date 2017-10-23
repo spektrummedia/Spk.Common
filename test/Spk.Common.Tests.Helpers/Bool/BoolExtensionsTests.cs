@@ -1,4 +1,4 @@
-﻿using Spk.Common.Helpers.Bool;
+using Spk.Common.Helpers.Bool;
 using Xunit;
 
 namespace Spk.Common.Tests.Helpers.Bool

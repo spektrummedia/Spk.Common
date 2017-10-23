@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Spk.Common.Helpers.DateTime
 {
@@ -13,7 +13,7 @@ namespace Spk.Common.Helpers.DateTime
         /// <returns></returns>
         public static long ToEpochTime(this System.DateTime dt)
         {
-            return (long) (dt - Epoch).TotalSeconds;
+            return (long)(dt - Epoch).TotalSeconds;
         }
 
         /// <summary>
@@ -23,7 +23,38 @@ namespace Spk.Common.Helpers.DateTime
         /// <returns></returns>
         public static long? ToEpochTime(this System.DateTime? dt)
         {
-            return dt.HasValue ? (long?) ToEpochTime(dt.Value) : null;
+            return dt.HasValue ? (long?)ToEpochTime(dt.Value) : null;
+        }
+
+        /// <summary>
+        ///     Returns a boolean if a given date is a working day.
+        /// </summary>
+        /// <param name="dt">The <see cref="System.DateTime" /> to check.</param>
+        /// <returns></returns>
+        public static bool IsWorkingDay(this System.DateTime date)
+        {
+            return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
+        }
+
+        /// <summary>
+        ///     Returns a boolean if a given date is weekend.
+        /// </summary>
+        /// <param name="dt">The <see cref="System.DateTime" /> to check.</param>
+        /// <returns></returns>
+        public static bool IsWeekend(this System.DateTime date) => !IsWorkingDay(date);
+
+        /// <summary>
+        ///     Returns the next workday of if a date is on the weekend.
+        ///     Returns current day if it is a workday.
+        /// </summary>
+        /// <param name="dt">The <see cref="System.DateTime" /> to check.</param>
+        /// <returns></returns>
+        public static System.DateTime NextWorkday(this System.DateTime date)
+        {
+            var nextDay = date;
+            while (!nextDay.IsWorkingDay())
+                nextDay = nextDay.AddDays(1);
+            return nextDay;
         }
     }
 }

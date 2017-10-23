@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Shouldly;
 using Spk.Common.Helpers.Guard;
 using Xunit;
