@@ -9,7 +9,7 @@ using Spk.Common.Helpers.Guard;
 namespace Spk.Common.Helpers.Collection
 {
     /// <summary>
-    ///     A one-way synchronization of a target collection with a source collection.
+    ///     Performs a one-way synchronization of a target collection with a source collection.
     /// </summary>
     /// <typeparam name="TSource">Type of the items in the source collection</typeparam>
     /// <typeparam name="TTarget">type of the items in the target collection</typeparam>
@@ -134,7 +134,7 @@ namespace Spk.Common.Helpers.Collection
         ///     * Each item in the target also found in the source are updated.
         ///     * Each item in the target not found in the source are removed.
         /// </summary>
-        internal void Execute()
+        public void Execute()
         {
             var sourceWorkingList = Source.ToList();
 
