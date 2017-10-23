@@ -1,4 +1,5 @@
 ﻿using System;
+using Shouldly;
 using Spk.Common.Helpers.DateTime;
 using Xunit;
 
@@ -51,34 +52,27 @@ namespace Spk.Common.Tests.Helpers.DateTime
             Assert.True(new System.DateTime(2018, 1, 7).IsWeekend());
         }
 
-        [Fact]
-        public void NextWorkday_ShouldReturnMonday_WhenSunday()
+        [Theory]
+        [InlineData(2018, 1, 6)] // saturday
+        [InlineData(2018, 1, 7)]
+        public void NextWorkday_ShouldReturnMonday_WhenWeekEnd(int year, int month, int day)
         {
-            // 2018/01/07 is sunday
             Assert.Equal(
-                new System.DateTime(2018, 1, 7).NextWorkday(),
-                new System.DateTime(2018, 1, 8)
+                new System.DateTime(year, month, day).NextWorkday(),
+                new System.DateTime(2018, 1, 8) // monday
             );
         }
 
-        [Fact]
-        public void NextWorkday_ShouldReturnMonday_WhenSaturday()
+        [Theory]
+        [InlineData(2018, 1, 8)] // monday
+        [InlineData(2018, 1, 9)]
+        [InlineData(2018, 1, 10)]
+        [InlineData(2018, 1, 11)]
+        [InlineData(2018, 1, 12)]
+        public void NextWorkday_ShouldReturnSameDay_WhenWorkday(int year, int month, int day)
         {
-            // 2018/01/06 is saturday
-            Assert.Equal(
-                new System.DateTime(2018, 1, 6).NextWorkday(),
-                new System.DateTime(2018, 1, 8)
-            );
-        }
-
-        [Fact]
-        public void NextWorkday_ShouldReturnMonday_WhenMonday()
-        {
-            // 2018/01/08 is monday
-            Assert.Equal(
-                new System.DateTime(2018, 1, 8).NextWorkday(),
-                new System.DateTime(2018, 1, 8)
-            );
+            var date = new System.DateTime(year, month, day);
+            date.NextWorkday().ShouldBe(date);
         }
     }
 }
