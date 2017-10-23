@@ -4,21 +4,20 @@ using Xunit;
 namespace Spk.Common.Tests.Helpers.String
 {
     /// <summary>
-    /// These tests exist just to make sure they call the right API.
+    ///     These tests exist just to make sure they call the right API.
     /// </summary>
     public class StringExtensionsTests
     {
         [Fact]
-        public void IsNullorEmpty_ShouldReturnTrue_WhenNull()
+        public void HtmlDecode_ShouldDecodeProperly()
         {
-            string test = null;
-            Assert.True(test.IsNullOrEmpty());
+            Assert.Equal("<p>Hi!</p>", "&lt;p&gt;Hi!&lt;/p&gt;".HtmlDecode());
         }
 
         [Fact]
-        public void IsNullorEmpty_ShouldReturnTrue_WhenEmpty()
+        public void HtmlEncode_ShouldEncodeProperly()
         {
-            Assert.True("".IsNullOrEmpty());
+            Assert.Equal("&lt;p&gt;Hi!&lt;/p&gt;", "<p>Hi!</p>".HtmlEncode());
         }
 
         [Fact]
@@ -28,31 +27,83 @@ namespace Spk.Common.Tests.Helpers.String
         }
 
         [Fact]
-        public void HtmlEncode_ShouldEncodeProperly()
+        public void IsNullorEmpty_ShouldReturnTrue_WhenEmpty()
         {
-            var result = "<p>Hi!</p>".HtmlEncode();
-            Assert.Equal("&lt;p&gt;Hi!&lt;/p&gt;", result);
+            Assert.True("".IsNullOrEmpty());
         }
 
         [Fact]
-        public void HtmlDecode_ShouldDecodeProperly()
+        public void IsNullorEmpty_ShouldReturnTrue_WhenNull()
         {
-            var result = "&lt;p&gt;Hi!&lt;/p&gt;".HtmlDecode();
-            Assert.Equal("<p>Hi!</p>", result);
+            string test = null;
+            Assert.True(test.IsNullOrEmpty());
         }
 
         [Fact]
-        public void UrlEncode_ShouldEncodeProperly()
+        public void RemoveDiacritics_ShouldRemoveDiacritics()
         {
-            var result = "test string".UrlEncode();
-            Assert.Equal("test+string", result);
+            Assert.Equal("aeio", "àèîô".RemoveDiacritics());
+        }
+
+        [Fact]
+        public void ToBoolean_ShouldConvertProperly()
+        {
+            Assert.True("true".ToBoolean());
+            Assert.False("false".ToBoolean());
+        }
+
+        [Fact]
+        public void ToDecimal_ShouldConvertProperly()
+        {
+            Assert.Equal(42.01m, "42.01".ToDecimal());
+        }
+
+        [Fact]
+        public void ToFloat_ShouldConvertProperly()
+        {
+            Assert.Equal(42.01f, "42.01".ToFloat());
+        }
+
+        [Fact]
+        public void ToInt32_ShouldConvertProperly()
+        {
+            Assert.Equal(42, "42".ToInt32());
         }
 
         [Fact]
         public void UrlDecode_ShouldDecodeProperly()
         {
-            var result = "test+string".UrlDecode();
-            Assert.Equal("test string", result);
+            Assert.Equal("test string", "test+string".UrlDecode());
+        }
+
+        [Fact]
+        public void UrlEncode_ShouldEncodeProperly()
+        {
+            Assert.Equal("test+string", "test string".UrlEncode());
+        }
+
+        [Fact]
+        public void Truncate_ShouldBeEmpty_WhenMaxLengthIs0()
+        {
+            Assert.Equal(string.Empty, "test".Truncate(0));
+        }
+
+        [Fact]
+        public void Truncate_ShouldBeTruncateProperly()
+        {
+            Assert.Equal("te", "test".Truncate(2));
+        }
+
+        [Fact]
+        public void TruncateWithEllipsis_ShouldCountEllipsis()
+        {
+            Assert.Equal("...", "test".TruncateWithEllipsis(2));
+        }
+
+        [Fact]
+        public void TruncateWithEllipsis_ShouldBeTruncateProperly()
+        {
+            Assert.Equal("ab...", "abcdefghijk of test".TruncateWithEllipsis(5));
         }
     }
 }
