@@ -10,7 +10,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         private readonly IEnumerable<int> TestCases = Enumerable.Range(1, 10000);
 
         [Fact]
-        public void RandomElement_ShouldAlmostNeverBeEqual()
+        public void Shuffle_ShouldAlmostNeverBeEqual()
         {
             for (var i = 0; i < 50; i++)
             {
