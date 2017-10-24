@@ -1,4 +1,4 @@
-﻿using Spk.Common.Validators.String;
+using Spk.Common.Validators.String;
 using Xunit;
 
 namespace Spk.Common.Tests.Validators.String

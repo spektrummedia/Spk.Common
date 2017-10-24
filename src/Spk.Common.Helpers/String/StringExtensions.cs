@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -9,64 +9,53 @@ namespace Spk.Common.Helpers.String
     public static class StringExtensions
     {
         /// <summary>
-        ///     Answer true if this string is either null or empty.
+        /// Answer true if this string is either null or empty.
         /// </summary>
         /// <param name="s">The string to check</param>
         /// <returns></returns>
-        public static bool IsNullOrEmpty(this string s)
-        {
-            return string.IsNullOrEmpty(s);
-        }
+        public static bool IsNullOrEmpty(this string s) => string.IsNullOrEmpty(s);
 
         /// <summary>
-        ///     Answer true if this string is either null or empty.
+        /// Answer true if this string is either null or white spaces only.
         /// </summary>
         /// <param name="s">The string to check</param>
         /// <returns></returns>
-        public static bool HasValue(this string s)
-        {
-            return !IsNullOrEmpty(s);
-        }
+        public static bool IsNullOrWhiteSpace(this string s) => string.IsNullOrWhiteSpace(s);
 
         /// <summary>
-        ///     Encodes the string as HTML
+        /// Answer true if this string is either null or empty.
+        /// </summary>
+        /// <param name="s">The string to check</param>
+        /// <returns></returns>
+        public static bool HasValue(this string s) => !IsNullOrEmpty(s);
+
+        /// <summary>
+        /// Encodes the string as HTML
         /// </summary>
         /// <param name="s">The dangerous string to encode</param>
         /// <returns></returns>
-        public static string HtmlEncode(this string s)
-        {
-            return s.HasValue() ? WebUtility.HtmlEncode(s) : s;
-        }
+        public static string HtmlEncode(this string s) => s.HasValue() ? WebUtility.HtmlEncode(s) : s;
 
         /// <summary>
-        ///     Decodes an HTML string.
+        /// Decodes an HTML string.
         /// </summary>
         /// <param name="s">The HTML-encoded string to decode.</param>
         /// <returns></returns>
-        public static string HtmlDecode(this string s)
-        {
-            return s.HasValue() ? WebUtility.HtmlDecode(s) : s;
-        }
+        public static string HtmlDecode(this string s) => s.HasValue() ? WebUtility.HtmlDecode(s) : s;
 
         /// <summary>
-        ///     Encodes the string for URLs.
+        /// Encodes the string for URLs.
         /// </summary>
         /// <param name="s">The string to encode</param>
         /// <returns></returns>
-        public static string UrlEncode(this string s)
-        {
-            return s.HasValue() ? WebUtility.UrlEncode(s) : s;
-        }
+        public static string UrlEncode(this string s) => s.HasValue() ? WebUtility.UrlEncode(s) : s;
 
         /// <summary>
-        ///     Decodes an URL-encoded string.
+        /// Decodes an URL-encoded string.
         /// </summary>
         /// <param name="s">The URL-encoded string to decode.</param>
         /// <returns></returns>
-        public static string UrlDecode(this string s)
-        {
-            return s.HasValue() ? WebUtility.UrlDecode(s) : s;
-        }
+        public static string UrlDecode(this string s) => s.HasValue() ? WebUtility.UrlDecode(s) : s;
 
         /// <summary>
         ///     Convert a string to integer using the Convert.ToInt32 method.
