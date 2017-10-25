@@ -17,16 +17,9 @@ namespace Spk.Common.Helpers.Drawing
         {
             var clusters = new List<Rectangle>();
 
-            // Merging all rectangles in clusters
-            foreach (var rect in rectangles)
+            foreach (var rect in rectangles.ApplyOrdering())
             {
                 IntersectsWithClusters(clusters, rect);
-            }
-
-            // Merge clusters together
-            foreach (var cluster in clusters.ToArray())
-            {
-                IntersectsWithClusters(clusters, cluster);
             }
 
             return clusters.ToArray();
@@ -40,8 +33,7 @@ namespace Spk.Common.Helpers.Drawing
                 if (rect.IntersectsWith(clusters[i]))
                 {
                     matched = true;
-                    clusters.Add(Rectangle.Union(clusters[i], rect));
-                    clusters.RemoveAt(i);
+                    clusters[i] = Rectangle.Union(clusters[i], rect);
                 }
             }
 
@@ -49,6 +41,15 @@ namespace Spk.Common.Helpers.Drawing
             {
                 clusters.Add(rect);
             }
+        }
+
+        private static IEnumerable<Rectangle> ApplyOrdering(this IEnumerable<Rectangle> rectangles)
+        {
+            return rectangles
+                .OrderBy(x => x.X)
+                .ThenBy(x => x.Y)
+                .ThenBy(x => x.Width)
+                .ThenBy(x => x.Height);
         }
     }
 }
