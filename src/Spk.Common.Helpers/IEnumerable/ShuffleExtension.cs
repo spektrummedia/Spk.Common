@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
+using Spk.Common.Helpers.Random;
 
 namespace Spk.Common.Helpers.IEnumerable
 {
@@ -14,15 +13,7 @@ namespace Spk.Common.Helpers.IEnumerable
         /// <param name="elements">The source collection.</param>
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> elements)
         {
-            return elements.Skip(ThreadSafeRandom.Random.Next(elements.Count()));
+            return elements.OrderBy(e => ThreadSafeRandom.Random.Next());
         }
-    }
-
-    public static class ThreadSafeRandom
-    {
-        [ThreadStatic] private static Random Local;
-
-        public static Random Random =>
-            Local ?? (Local = new Random(unchecked(Environment.TickCount * 31 + Thread.CurrentThread.ManagedThreadId)));
     }
 }
