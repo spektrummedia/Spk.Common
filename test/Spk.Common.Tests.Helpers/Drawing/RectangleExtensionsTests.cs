@@ -64,7 +64,7 @@ namespace Spk.Common.Tests.Helpers.Drawing
         }
 
         [Fact]
-        public void Merge_ShouldNotMergeSeperateRectangles()
+        public void Merge_ShouldMergeSeperateRectangles_WhenPositionDiffers()
         {
             var result = new List<Rectangle>
             {
