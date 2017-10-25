@@ -35,18 +35,6 @@ namespace Spk.Common.Tests.Helpers.Drawing
         }
 
         [Fact]
-        public void Merge_ShouldNotMergeRectangles_WhenTwoDifferent()
-        {
-            var result = new List<Rectangle>
-            {
-                new Rectangle(50, 0, 20, 20),
-                new Rectangle(0, 0, 40, 20)
-            }.Merge();
-
-            Assert.Equal(2, result.Length);
-        }
-
-        [Fact]
         public void Merge_ShouldMergeSeperateRectangles()
         {
             var result = new List<Rectangle>
@@ -61,6 +49,58 @@ namespace Spk.Common.Tests.Helpers.Drawing
             }.Merge();
 
             Assert.Equal(3, result.Length);
+        }
+
+        [Fact]
+        public void Merge_ShouldNotMergeRectangles_WhenTwoDifferent()
+        {
+            var result = new List<Rectangle>
+            {
+                new Rectangle(50, 0, 20, 20),
+                new Rectangle(0, 0, 40, 20)
+            }.Merge();
+
+            Assert.Equal(2, result.Length);
+        }
+
+        [Fact]
+        public void Merge_ShouldNotMergeSeperateRectangles()
+        {
+            var result = new List<Rectangle>
+            {
+                new Rectangle
+                {
+                    X = 997,
+                    Y = 376,
+                    Width = 452,
+                    Height = 734
+                },
+                new Rectangle
+                {
+                    X = 1088,
+                    Y = 942,
+                    Width = 32,
+                    Height = 52
+                },
+
+                new Rectangle
+                {
+                    X = 992,
+                    Y = 372,
+                    Width = 178,
+                    Height = 329
+                },
+
+                new Rectangle
+                {
+                    X = 991,
+                    Y = 320,
+                    Width = 206,
+                    Height = 29
+                },
+            }.Merge();
+
+            Assert.Equal(2, result.Length);
         }
     }
 }
