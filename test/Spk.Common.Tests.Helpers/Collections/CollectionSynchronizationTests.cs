@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Moq;
 using Shouldly;
@@ -488,7 +488,7 @@ namespace Spk.Common.Tests.Helpers.Collections
 
         public override int GetHashCode()
         {
-            return String != null ? String.GetHashCode(StringComparison.CurrentCultureIgnoreCase) : 0;
+            return String != null ? String.GetHashCode() : 0;
         }
     }
 
