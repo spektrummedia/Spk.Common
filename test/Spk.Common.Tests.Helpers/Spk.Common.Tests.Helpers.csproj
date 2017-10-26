@@ -15,12 +15,5 @@
     <ItemGroup>
       <ProjectReference Include="..\..\src\Spk.Common.Helpers\Spk.Common.Helpers.csproj" />
     </ItemGroup>
-    
-    <PropertyGroup Condition="'$(TargetFramework)'=='net452'">
-        <DefineConstants>NET452;</DefineConstants>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-        <DefineConstants>NETSTANDARD20;</DefineConstants>
-    </PropertyGroup>
 
 </Project>
