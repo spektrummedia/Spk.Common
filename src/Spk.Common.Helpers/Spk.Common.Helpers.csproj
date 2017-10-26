@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>spektrummedia</Authors>
         <Company>Spektrum Media</Company>
@@ -8,5 +8,11 @@
         <RepositoryUrl>https://github.com/spektrumgeeks/Spk.Common</RepositoryUrl>
         <Version>1.0.5</Version>
         <Description>Library exposing code used in multiple projects.</Description>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(TargetFramework)'=='net452'">
+        <DefineConstants>NET452;</DefineConstants>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+        <DefineConstants>NETSTANDARD20;</DefineConstants>
     </PropertyGroup>
 </Project>
