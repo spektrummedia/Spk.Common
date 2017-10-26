@@ -146,5 +146,15 @@
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Spk.Common.Helpers\Spk.Common.Helpers.csproj">
+      <Project>{f83c7ee8-d36c-491b-9b53-c9b299c65d79}</Project>
+      <Name>Spk.Common.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Spk.Common.Validators\Spk.Common.Validators.csproj">
+      <Project>{5b3c8276-94d3-4297-9662-b02f133f5c67}</Project>
+      <Name>Spk.Common.Validators</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
