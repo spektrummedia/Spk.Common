@@ -25,14 +25,13 @@ namespace Spk.Common.Helpers.Localization
             Apply(mode, new CultureInfo(cultureName));
         }
 
-
         private static void Apply(CultureScopeMode mode, CultureInfo culture)
         {
             if (mode.HasFlag(CultureScopeMode.Main))
             {
 #if NETSTANDARD2_0
                 CultureInfo.CurrentCulture = culture;
-#elif NET45
+#elif NET452
                 Thread.CurrentThread.CurrentCulture = culture;
 #endif
             }
@@ -40,7 +39,7 @@ namespace Spk.Common.Helpers.Localization
             {
 #if NETSTANDARD2_0
                 CultureInfo.CurrentUICulture = culture;
-#elif NET45
+#elif NET452
                 Thread.CurrentThread.CurrentUICulture = culture;
 #endif
             }
@@ -51,7 +50,7 @@ namespace Spk.Common.Helpers.Localization
 #if NETSTANDARD2_0
             CultureInfo.CurrentCulture = _initialMain;
             CultureInfo.CurrentUICulture = _initialUi;
-#elif NET45
+#elif NET452
             Thread.CurrentThread.CurrentCulture = _initialMain;
             Thread.CurrentThread.CurrentUICulture = _initialUi;
 #endif
