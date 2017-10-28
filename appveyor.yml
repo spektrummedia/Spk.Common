@@ -3,9 +3,16 @@ image: Visual Studio 2017
 branches:
   only:
     - master
+    - feature/code-coverage
+
+environment:
+  CODECOV_TOKEN:
+    secure: eYccfOdbN9AgU0aUdxkCSGnI3rcidyjm8WJww77ue2hr/otpFF7qZS+VHEF3icQR
 
 install:
   - dotnet restore
+  - choco install opencover.portable
+  - choco install codecov
 
 build_script:
   - dotnet build -c Release
@@ -14,7 +21,9 @@ artifacts:
   - path: '**\*.nupkg'
 
 test_script:
-  - ps: gci -Directory -Path test | ForEach-Object {dotnet test -c Release $_.FullName}
+#  - ps: gci -Directory -Path test | ForEach-Object {dotnet test -c Release $_.FullName}
+  - OpenCover.Console.exe -target:"C:\Program Files\dotnet\dotnet.exe" -targetargs:"test" -output:".\coverage_result.xml"
+  - ps: codecov -f .\coverage_result.xml -t $env:CODECOV_TOKEN
 
 deploy:
   provider: NuGet
