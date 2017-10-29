@@ -21,9 +21,7 @@ artifacts:
   - path: '**\*.nupkg'
 
 test_script:
-#  - ps: gci -Directory -Path test | ForEach-Object {dotnet test -c Release $_.FullName}
-  - OpenCover.Console.exe -target:"C:\Program Files\dotnet\dotnet.exe" -targetargs:"test" -output:".\coverage_result.xml"
-  - ps: codecov -f .\coverage_result.xml -t $env:CODECOV_TOKEN
+  - ps: ./test.ps1
 
 deploy:
   provider: NuGet
