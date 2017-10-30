@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.Threading;
 using Shouldly;
@@ -70,6 +71,13 @@ namespace Spk.Common.Tests.Helpers.Localization
 
             CultureInfo.CurrentCulture.Name.ShouldBe(Initial);
             CultureInfo.CurrentUICulture.Name.ShouldBe(Initial);
+        }
+
+        [Fact]
+        public void Should_ThrowArgumentNullException_WhenCultureInfoIsNull()
+        {
+            CultureInfo nullCulture = null;
+            Assert.Throws<ArgumentNullException>(() => new CultureScope(nullCulture));
         }
     }
 }

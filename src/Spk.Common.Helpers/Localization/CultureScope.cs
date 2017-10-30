@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Threading;
+using Spk.Common.Helpers.Guard;
 
 namespace Spk.Common.Helpers.Localization
 {
@@ -27,6 +28,8 @@ namespace Spk.Common.Helpers.Localization
 
         private static void Apply(CultureScopeMode mode, CultureInfo culture)
         {
+            culture.GuardIsNotNull(nameof(culture));
+
             if (mode.HasFlag(CultureScopeMode.Main))
             {
 #if NETSTANDARD2_0
