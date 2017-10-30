@@ -3,9 +3,16 @@ image: Visual Studio 2017
 branches:
   only:
     - master
+    - develop
+
+environment:
+  CODECOV_TOKEN:
+    secure: eYccfOdbN9AgU0aUdxkCSGnI3rcidyjm8WJww77ue2hr/otpFF7qZS+VHEF3icQR
 
 install:
   - dotnet restore
+  - choco install opencover.portable
+  - choco install codecov
 
 build_script:
   - dotnet build -c Release
@@ -14,10 +21,12 @@ artifacts:
   - path: '**\*.nupkg'
 
 test_script:
-  - ps: gci -Directory -Path test | ForEach-Object {dotnet test -c Release $_.FullName}
+  - ps: ./test.ps1
 
 deploy:
   provider: NuGet
   api_key:
     secure: 08VoeMu7J5NvW2Rhro9kRtzP53d6omvavlOgBaY32/WQt5ENeE3HKKCe1tbCDOUy
   artifact: /.*\.nupkg/
+  on:
+    branch: master
