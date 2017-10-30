@@ -3,7 +3,7 @@ image: Visual Studio 2017
 branches:
   only:
     - master
-    - feature/code-coverage
+    - develop
 
 environment:
   CODECOV_TOKEN:
@@ -28,3 +28,5 @@ deploy:
   api_key:
     secure: 08VoeMu7J5NvW2Rhro9kRtzP53d6omvavlOgBaY32/WQt5ENeE3HKKCe1tbCDOUy
   artifact: /.*\.nupkg/
+    on:
+      branch: master
