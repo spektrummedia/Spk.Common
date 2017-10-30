@@ -1,10 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>net452;netcoreapp2.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>spektrummedia</Authors>
         <Company>Spektrum Media</Company>
         <PackageIconUrl>https://avatars1.githubusercontent.com/u/13052913</PackageIconUrl>
         <RepositoryUrl>https://github.com/spektrumgeeks/Spk.Common</RepositoryUrl>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+      <DebugType>full</DebugType>
+      <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 </Project>
