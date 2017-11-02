@@ -1,4 +1,3 @@
-﻿using System;
 using Shouldly;
 using Spk.Common.Helpers.DateTime;
 using Xunit;
@@ -73,6 +72,31 @@ namespace Spk.Common.Tests.Helpers.DateTime
         {
             var date = new System.DateTime(year, month, day);
             date.NextWorkday().ShouldBe(date);
+        }
+
+        [Theory]
+        [InlineData(10, 10, 11)]
+        [InlineData(10, 9, 11)]
+        [InlineData(10, 9, 10)]
+        public void InRange_ShouldReturnTrue_WhenInRange(int dayUndertest,int lowerDay, int upperDay)
+        {
+            var dateUnderTest = new System.DateTime(2018, 10, dayUndertest);
+            var lower = new System.DateTime(2018, 10, lowerDay);
+            var upper = new System.DateTime(2018, 10, upperDay);
+
+            dateUnderTest.IsWithinRange(lower, upper).ShouldBeTrue();
+        }
+
+        [Theory]
+        [InlineData(10, 11, 12)]
+        [InlineData(10, 8, 9)]
+        public void InRange_ShouldReturnTrue_WhenNotInRange(int dayUnderTest, int lowerDay, int upperDay)
+        {
+            var dateUnderTest = new System.DateTime(2018, 10, dayUnderTest);
+            var lower = new System.DateTime(2018, 10, lowerDay);
+            var upper = new System.DateTime(2018, 10, upperDay);
+
+            dateUnderTest.IsWithinRange(lower, upper).ShouldBeFalse();
         }
     }
 }
