@@ -15,7 +15,7 @@ namespace Spk.Common.Tests.Helpers.Localization
         {
             var cultureInfo = CultureInfo.CreateSpecificCulture(Initial);
 
-#if NET452
+#if NET45
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Thread.CurrentThread.CurrentCulture = cultureInfo;
 #endif
