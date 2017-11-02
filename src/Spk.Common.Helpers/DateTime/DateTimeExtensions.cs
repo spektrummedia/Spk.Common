@@ -64,7 +64,7 @@ namespace Spk.Common.Helpers.DateTime
         /// <param name="startDate">The start <see cref="System.DateTime" />.</param>
         /// <param name="endDate">The end <see cref="System.DateTime" />.</param>
         /// <returns></returns>
-        public static bool InRange(this System.DateTime date, System.DateTime startDate, System.DateTime endDate)
+        public static bool IsWithinRange(this System.DateTime date, System.DateTime startDate, System.DateTime endDate)
         {
             return startDate <= date && date <= endDate;
         }

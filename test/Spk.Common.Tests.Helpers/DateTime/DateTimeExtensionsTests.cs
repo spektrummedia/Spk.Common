@@ -1,4 +1,3 @@
-using System;
 using Shouldly;
 using Spk.Common.Helpers.DateTime;
 using Xunit;
@@ -75,19 +74,29 @@ namespace Spk.Common.Tests.Helpers.DateTime
             date.NextWorkday().ShouldBe(date);
         }
 
-        [Fact]
-        public void InRange_ShouldReturnTrue_WhenInRange()
+        [Theory]
+        [InlineData(10, 10, 11)]
+        [InlineData(10, 9, 11)]
+        [InlineData(10, 9, 10)]
+        public void InRange_ShouldReturnTrue_WhenInRange(int dayUndertest,int lowerDay, int upperDay)
         {
-            Assert.True(System.DateTime.Now.InRange(System.DateTime.Now.AddDays(-1), System.DateTime.Now.AddDays(1)));
-            Assert.True(System.DateTime.Now.InRange(System.DateTime.Now, System.DateTime.Now.AddDays(1)));
-            Assert.True(System.DateTime.Now.InRange(System.DateTime.Now.AddDays(-1), System.DateTime.Now));
+            var dateUnderTest = new System.DateTime(2018, 10, dayUndertest);
+            var lower = new System.DateTime(2018, 10, lowerDay);
+            var upper = new System.DateTime(2018, 10, upperDay);
+
+            dateUnderTest.IsWithinRange(lower, upper).ShouldBeTrue();
         }
 
-        [Fact]
-        public void InRange_ShouldReturnTrue_WhenNotInRange()
+        [Theory]
+        [InlineData(10, 11, 12)]
+        [InlineData(10, 8, 9)]
+        public void InRange_ShouldReturnTrue_WhenNotInRange(int dayUnderTest, int lowerDay, int upperDay)
         {
-            Assert.False(System.DateTime.Now.InRange(System.DateTime.Now.AddDays(1), System.DateTime.Now.AddDays(3)));
-            Assert.False(System.DateTime.Now.InRange(System.DateTime.Now.AddDays(-2), System.DateTime.Now.AddDays(-1)));
+            var dateUnderTest = new System.DateTime(2018, 10, dayUnderTest);
+            var lower = new System.DateTime(2018, 10, lowerDay);
+            var upper = new System.DateTime(2018, 10, upperDay);
+
+            dateUnderTest.IsWithinRange(lower, upper).ShouldBeFalse();
         }
     }
 }
