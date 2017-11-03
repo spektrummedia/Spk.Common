@@ -1,15 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>spektrummedia</Authors>
         <Company>Spektrum Media</Company>
         <PackageIconUrl>https://avatars1.githubusercontent.com/u/13052913</PackageIconUrl>
         <RepositoryUrl>https://github.com/spektrumgeeks/Spk.Common</RepositoryUrl>
-        <Version>1.1.0</Version>
+        <Version>1.2.0</Version>
         <Description>Library exposing code used in multiple projects.</Description>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net452|AnyCPU'">
+    <PropertyGroup>
       <DebugType>full</DebugType>
       <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>

@@ -1,5 +1,7 @@
-
 # Created by https://www.gitignore.io/api/dotsettings,git,tortoisegit,csharp,visualstudio,visualstudiocode,jetbrains,umbraco,phpstorm,node,webstorm
+
+# BenchmarkDotNet
+BenchmarkDotNet.Artifacts/
 
 # Project specifics
 coverage_result.xml
