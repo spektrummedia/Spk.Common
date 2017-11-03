@@ -34,7 +34,7 @@ namespace Spk.Common.Helpers.Localization
             {
 #if NETSTANDARD2_0
                 CultureInfo.CurrentCulture = culture;
-#elif NET452
+#elif NET45
                 Thread.CurrentThread.CurrentCulture = culture;
 #endif
             }
@@ -42,7 +42,7 @@ namespace Spk.Common.Helpers.Localization
             {
 #if NETSTANDARD2_0
                 CultureInfo.CurrentUICulture = culture;
-#elif NET452
+#elif NET45
                 Thread.CurrentThread.CurrentUICulture = culture;
 #endif
             }
@@ -53,7 +53,7 @@ namespace Spk.Common.Helpers.Localization
 #if NETSTANDARD2_0
             CultureInfo.CurrentCulture = _initialMain;
             CultureInfo.CurrentUICulture = _initialUi;
-#elif NET452
+#elif NET45
             Thread.CurrentThread.CurrentCulture = _initialMain;
             Thread.CurrentThread.CurrentUICulture = _initialUi;
 #endif
