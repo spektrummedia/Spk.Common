@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
+        <TargetFrameworks>net45;netcoreapp2.0</TargetFrameworks>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
@@ -10,6 +10,7 @@
         <PackageReference Include="Shouldly" Version="3.0.0-beta0003" />
         <PackageReference Include="xunit" Version="2.3.0" />
         <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0" />
+        <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.0" />
     </ItemGroup>
 
     <ItemGroup>
