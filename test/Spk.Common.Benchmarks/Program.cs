@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using BenchmarkDotNet.Running;
+using Spk.Common.Benchmarks.Helpers.IEnumerable;
 
 namespace Spk.Common.Benchmarks
 {
@@ -10,6 +7,7 @@ namespace Spk.Common.Benchmarks
     {
         static void Main(string[] args)
         {
+            BenchmarkRunner.Run<ShuffleExtensionBenchmarks>();
         }
     }
 }
