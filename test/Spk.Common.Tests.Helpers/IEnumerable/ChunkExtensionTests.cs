@@ -16,8 +16,11 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         [InlineData(1, 1, 1)]
         public void Chunk_ShouldDoPartitioning(int count, int chunk, int expectedCount)
         {
+            // Arrange
             var list = new List<string>();
             list.AddRange(Enumerable.Repeat("random value", count));
+
+            // Act & assert
             Assert.Equal(expectedCount, list.Chunk(chunk).Count());
         }
 
@@ -34,7 +37,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
 
             var results = initialList.Chunk(1).ToArray();
 
-            // Asset
+            // Assert
             for (int i = 0; i < results.Length; i++)
             {
                 Assert.Single(results[i]);
