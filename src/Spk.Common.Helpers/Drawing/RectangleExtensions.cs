@@ -13,7 +13,7 @@ namespace Spk.Common.Helpers.Drawing
         /// </summary>
         /// <param name="rectangles">List of rectangles to merge</param>
         /// <returns>Clusters of rectangles</returns>
-        public static Rectangle[] Merge(this IEnumerable<Rectangle> rectangles)
+        public static IEnumerable<Rectangle> Merge(this IEnumerable<Rectangle> rectangles)
         {
             var clusters = new List<Rectangle>();
 
@@ -22,7 +22,7 @@ namespace Spk.Common.Helpers.Drawing
                 IntersectsWithClusters(clusters, rect);
             }
 
-            return clusters.ToArray();
+            return clusters;
         }
 
         private static void IntersectsWithClusters(List<Rectangle> clusters, Rectangle rect)
