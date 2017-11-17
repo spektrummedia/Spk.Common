@@ -27,7 +27,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         [Fact]
         public void Chunk_ShouldSpreadElementsOverResults()
         {
-            // Arrange & act
+            // Arrange & act 
             var initialList = new List<string>
             {
                 "b",
@@ -38,7 +38,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
             var results = initialList.Chunk(1).ToArray();
 
             // Assert
-            for (int i = 0; i < results.Length; i++)
+            for (var i = 0; i < results.Length; i++)
             {
                 Assert.Single(results[i]);
                 results[i].ShouldContain(initialList.ElementAt(i));
@@ -48,7 +48,10 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         [Fact]
         public void Chunk_ShouldThrow_WhenChunkSizeIsNotGreaterThan0()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => { new List<string>().Chunk(0); });
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+            {
+                new List<string>().Chunk(0);
+            });
         }
 
         [Fact]
