@@ -1,4 +1,4 @@
-#if NET452
+#if NET45
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
