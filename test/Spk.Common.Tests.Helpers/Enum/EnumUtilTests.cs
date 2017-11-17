@@ -1,10 +1,10 @@
+using System;
 using System.ComponentModel;
+using System.Linq;
 using Spk.Common.Helpers.Enum;
 using Xunit;
-using System.Linq;
-using System;
 
-namespace Spk.Common.Tests.Helpers.Bool
+namespace Spk.Common.Tests.Helpers.Enum
 {
     public class EnumUtilTest
     {
@@ -18,7 +18,7 @@ namespace Spk.Common.Tests.Helpers.Bool
         [Fact]
         public void Should_Get_List_Of_Tuple_From_Enum()
         {
-            var list = Util.EnumToListTuple<Test>();
+            var list = EnumUtils.ToTupleList<Test>();
 
             Assert.Equal(2, list.Count);
             Assert.Equal("Test2", list.First(x => x.Item1 == 1).Item2);
@@ -30,7 +30,7 @@ namespace Spk.Common.Tests.Helpers.Bool
         {
             Assert.Throws<ArgumentException>(() =>
             {
-                var list = Util.EnumToListTuple<string>();
+                EnumUtils.ToTupleList<string>();
             });
         }
     }

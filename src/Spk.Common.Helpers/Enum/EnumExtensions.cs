@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
-
 namespace Spk.Common.Helpers.Enum
 {
+    using System;   
+    using System.ComponentModel;
+    using System.Reflection;
+
     public static class EnumExtensions
     {
         /// <summary>
@@ -13,23 +11,19 @@ namespace Spk.Common.Helpers.Enum
         /// </summary>
         /// <param name="element">enumerator</param>
         /// <returns>the corresponding "description" attribute from the enumerator</returns>
-        public static string GetDescription(this System.Enum element)
+        public static string GetDescription(this Enum element)
         {
-            Type type = element.GetType();
+            var type = element.GetType();
 
-            MemberInfo[] memberInfo = type.GetMember(element.ToString());
+            var memberInfo = type.GetMember(element.ToString());
 
-            if (memberInfo != null && memberInfo.Length > 0)
-            {
-                object[] attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
+            if (memberInfo.Length <= 0) return element.ToString();
 
-                if (attributes != null && attributes.Length > 0)
-                {
-                    return ((DescriptionAttribute)attributes[0]).Description;
-                }
-            }
+            var attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
 
-            return element.ToString();
+            return attributes.Length > 0
+                ? ((DescriptionAttribute)attributes[0]).Description
+                : element.ToString();
         }
     }
 }

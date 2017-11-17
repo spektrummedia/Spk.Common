@@ -2,7 +2,7 @@ using System.ComponentModel;
 using Spk.Common.Helpers.Enum;
 using Xunit;
 
-namespace Spk.Common.Tests.Helpers.Bool
+namespace Spk.Common.Tests.Helpers.Enum
 {
     public class EnumExtensionsTest
     {
