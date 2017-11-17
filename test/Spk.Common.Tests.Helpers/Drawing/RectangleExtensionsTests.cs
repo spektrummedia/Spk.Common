@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using Shouldly;
 using Spk.Common.Helpers.Drawing;
 using Xunit;
 
@@ -42,8 +43,11 @@ namespace Spk.Common.Tests.Helpers.Drawing
             }.Merge();
 
             // Assert
-            Assert.Single(result);
-            Assert.Equal(40, result.ElementAt(0).Width);
+            var rectangle = Assert.Single(result);
+            Assert.Equal(20, rectangle.Height);
+            Assert.Equal(40, rectangle.Width);
+            Assert.Equal(0, rectangle.X);
+            Assert.Equal(0, rectangle.Y);
         }
 
         [Fact]
@@ -57,23 +61,32 @@ namespace Spk.Common.Tests.Helpers.Drawing
             }.Merge();
 
             // Assert
-            Assert.Single(result);
-            Assert.Equal(20, result.ElementAt(0).Height);
-            Assert.Equal(20, result.ElementAt(0).Width);
+            var rectangle = Assert.Single(result);
+            Assert.Equal(20, rectangle.Height);
+            Assert.Equal(20, rectangle.Width);
+            Assert.Equal(0, rectangle.X);
+            Assert.Equal(0, rectangle.Y);
         }
 
         [Fact]
         public void Merge_ShouldNotMerge_WhenRectanglesNotStacked()
         {
             // Arrange & act
+            var r1 = new Rectangle(50, 0, 20, 20);
+            var r2 = new Rectangle(0, 0, 40, 20);
             var result = new List<Rectangle>
-            {
-                new Rectangle(50, 0, 20, 20),
-                new Rectangle(0, 0, 40, 20)
-            }.Merge();
+                {
+                    r1,
+                    r2
+                }
+                .Merge()
+                .ToArray();
 
             // Assert
-            Assert.Equal(2, result.Count());
+            Assert.Equal(2, result.Length);
+
+            result.ShouldContain(r => r.Equals(r1));
+            result.ShouldContain(r => r.Equals(r2));
         }
     }
 }
