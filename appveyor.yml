@@ -10,6 +10,7 @@ environment:
     secure: eYccfOdbN9AgU0aUdxkCSGnI3rcidyjm8WJww77ue2hr/otpFF7qZS+VHEF3icQR
 
 install:
+  - dotnet --info
   - dotnet restore
   - choco install opencover.portable
   - choco install codecov
