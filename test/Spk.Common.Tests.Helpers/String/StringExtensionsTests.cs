@@ -120,7 +120,7 @@ namespace Spk.Common.Tests.Helpers.String
         public void Split_ShouldUseUnderlyingSplitMethod(string stringToSplit, char separator)
         {
             var splitByStringResult = stringToSplit.Split(separator.ToString(), splitOptions: StringSplitOptions.None);
-            var splitByCharResult = stringToSplit.Split(separator, options: StringSplitOptions.None);
+            var splitByCharResult = stringToSplit.Split(separator);
             splitByStringResult.ShouldBe(splitByCharResult);
         }
     }
