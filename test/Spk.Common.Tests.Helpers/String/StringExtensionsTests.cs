@@ -1,3 +1,5 @@
+using System;
+using Shouldly;
 using Spk.Common.Helpers.String;
 using Xunit;
 
@@ -104,6 +106,22 @@ namespace Spk.Common.Tests.Helpers.String
         public void TruncateWithEllipsis_ShouldBeTruncateProperly()
         {
             Assert.Equal("ab...", "abcdefghijk of test".TruncateWithEllipsis(5));
+        }
+
+        [Fact]
+        public void Split_ShouldUseSplitOptions_WhenProvided()
+        {
+            "Hello //// friend".Split("//").ShouldContain(string.Empty);
+            "Hello //// friend".Split("//", System.StringSplitOptions.RemoveEmptyEntries).ShouldNotContain(string.Empty);
+        }
+
+        [Theory]
+        [InlineData("Hello/friend", '/')]
+        public void Split_ShouldUseUnderlyingSplitMethod(string stringToSplit, char separator)
+        {
+            var splitByStringResult = stringToSplit.Split(separator.ToString(), splitOptions: StringSplitOptions.None);
+            var splitByCharResult = stringToSplit.Split(separator, options: StringSplitOptions.None);
+            splitByStringResult.ShouldBe(splitByCharResult);
         }
     }
 }
