@@ -11,7 +11,7 @@ namespace Spk.Common.Tests.Helpers.Service
         [InlineData("test")]
         [InlineData("")]
         [InlineData(null)]
-        public void SetData_SuccessShouldBeTrue(string value)
+        public void Success_ShouldBeTrue_WhenDataIsSet(string value)
         {
             // Arrange
             var sr = new ServiceResult<string>();
@@ -32,6 +32,7 @@ namespace Spk.Common.Tests.Helpers.Service
 
             // Act
             sr.AddError(error);
+            sr.AddError("bleh");
 
             // Assert
             sr.GetFirstError().ShouldBe(error);
