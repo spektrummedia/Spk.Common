@@ -37,6 +37,19 @@ namespace Spk.Common.Tests.Helpers.Service
             sr.Success.ShouldBeTrue();
         }
 
+        [Fact]
+        public void Success_ShouldBeFalse_WhenErrors()
+        {
+            // Arrange
+            var sr = new ServiceResult<string>();
+
+            // Act
+            sr.AddError("test");
+
+            // Assert
+            sr.Success.ShouldBeFalse();
+        }
+
         [Theory]
         [InlineData("error")]
         public void GetFirstError_ShouldReturnFirstError(string error)
