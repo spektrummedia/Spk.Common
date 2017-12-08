@@ -50,6 +50,21 @@ namespace Spk.Common.Tests.Helpers.Service
             sr.Success.ShouldBeFalse();
         }
 
+        [Fact]
+        public void Errors_ShouldRetrivedAllErrors()
+        {
+            // Arrange
+            var sr = new ServiceResult<string>();
+
+            // Act
+            sr.AddError("error 1");
+            sr.AddError("error 2");
+
+
+            // Assert
+            sr.Errors.Count.ShouldBe(2);
+        }
+
         [Theory]
         [InlineData("error")]
         public void GetFirstError_ShouldReturnFirstError(string error)
