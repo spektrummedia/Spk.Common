@@ -6,15 +6,16 @@ namespace Spk.Common.Helpers.Service
 {
     public class ServiceResult<T>
     {
-        public ServiceResult()
-        {
-            Errors = new List<string>();
-        }
-
-        public List<string> Errors { get; }
+        public IEnumerable<string> Errors => _internalErrors;
         public T Data { get; private set; }
 
         public bool Success => !Errors.Any();
+        private readonly List<string> _internalErrors;
+
+        public ServiceResult()
+        {
+            _internalErrors = new List<string>();
+        }
 
         public void SetData(T data)
         {
@@ -24,7 +25,7 @@ namespace Spk.Common.Helpers.Service
         public void AddError(string error)
         {
             error.GuardIsNotNull(nameof(error));
-            Errors.Add(error);
+            _internalErrors.Add(error);
         }
 
         public string GetFirstError()

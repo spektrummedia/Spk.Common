@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Shouldly;
 using Spk.Common.Helpers.Service;
 using Xunit;
@@ -62,7 +63,7 @@ namespace Spk.Common.Tests.Helpers.Service
 
 
             // Assert
-            sr.Errors.Count.ShouldBe(2);
+            sr.Errors.Count().ShouldBe(2);
         }
 
         [Theory]
