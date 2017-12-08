@@ -109,9 +109,14 @@ namespace Spk.Common.Tests.Helpers.String
         }
 
         [Fact]
-        public void Split_ShouldUseSplitOptions_WhenProvided()
+        public void Split_ShouldNotContainEmptyString()
         {
             "Hello //// friend".Split("//").ShouldContain(string.Empty);
+        }
+
+        [Fact]
+        public void Split_ShouldNotContainEmptyString_WhenSplitOptionsRemoveEmptyEntries()
+        {
             "Hello //// friend".Split("//", System.StringSplitOptions.RemoveEmptyEntries).ShouldNotContain(string.Empty);
         }
 

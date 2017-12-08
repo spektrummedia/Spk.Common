@@ -147,7 +147,8 @@ namespace Spk.Common.Helpers.String
             string separator,
             StringSplitOptions splitOptions = StringSplitOptions.None)
         {
-            return s.Split(new string[1] { separator }, splitOptions);
+            
+            return s.Split(new [] { separator }, splitOptions);
         }
     }
 }
