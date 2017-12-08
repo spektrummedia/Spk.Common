@@ -46,6 +46,25 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         }
 
         [Fact]
+        public void Chunk_ShouldPutIncompleteChunkAtEnd_WhenModulusGreaterThan0()
+        {
+            // Arrange & act 
+            var initialList = new List<string>
+            {
+                "b",
+                "c",
+                "a"
+            };
+
+            var results = initialList.Chunk(2).ToArray();
+
+            // Assert
+            results.Last().Count().ShouldBe(1);
+            results.Last().Last().ShouldBe(initialList.LastOrDefault());
+        }
+
+
+        [Fact]
         public void Chunk_ShouldThrow_WhenChunkSizeIsNotGreaterThan0()
         {
             Assert.Throws<ArgumentOutOfRangeException>(() =>
