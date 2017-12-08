@@ -9,6 +9,20 @@ namespace Spk.Common.Tests.Helpers.Service
     {
         [Theory]
         [InlineData("test")]
+        public void SetData_ShouldSetData(string value)
+        {
+            // Arrange
+            var sr = new ServiceResult<string>();
+
+            // Act
+            sr.SetData(value);
+
+            // Assert
+            sr.Data.ShouldBe(value);
+        }
+
+        [Theory]
+        [InlineData("test")]
         [InlineData("")]
         [InlineData(null)]
         public void Success_ShouldBeTrue_WhenDataIsSet(string value)
