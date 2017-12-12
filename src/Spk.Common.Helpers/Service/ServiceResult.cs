@@ -4,10 +4,9 @@ using Spk.Common.Helpers.Guard;
 
 namespace Spk.Common.Helpers.Service
 {
-    public class ServiceResult<T>
+    public class ServiceResult
     {
         public IEnumerable<string> Errors => _internalErrors;
-        public T Data { get; private set; }
 
         public bool Success => !Errors.Any();
         private readonly List<string> _internalErrors;
@@ -15,11 +14,6 @@ namespace Spk.Common.Helpers.Service
         public ServiceResult()
         {
             _internalErrors = new List<string>();
-        }
-
-        public void SetData(T data)
-        {
-            Data = data;
         }
 
         public void AddError(string error)
@@ -31,6 +25,16 @@ namespace Spk.Common.Helpers.Service
         public string GetFirstError()
         {
             return Errors.FirstOrDefault();
+        }
+    }
+
+    public class ServiceResult<T> : ServiceResult
+    {
+        public T Data { get; private set; }
+
+        public void SetData(T data)
+        {
+            Data = data;
         }
     }
 }
