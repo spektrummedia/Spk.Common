@@ -135,5 +135,20 @@ namespace Spk.Common.Helpers.String
         {
             return s.IsNullOrEmpty() || s.Length <= maxLength ? s : Truncate(s, Math.Max(maxLength, 3) - 3) + "...";
         }
+
+        /// <summary>
+        ///     Uses string.Split method to split given string by given separator.
+        /// </summary>
+        /// <param name="s">The string to truncate</param>
+        /// <param name="separator">String separator</param>
+        /// <returns></returns>
+        public static string[] Split(
+            this string s,
+            string separator,
+            StringSplitOptions splitOptions = StringSplitOptions.None)
+        {
+            
+            return s.Split(new [] { separator }, splitOptions);
+        }
     }
 }
