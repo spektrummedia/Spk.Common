@@ -9,6 +9,17 @@ namespace Spk.Common.Tests.Helpers.Service
     public class ServiceResultTests
     {
         [Theory]
+        [InlineData("data result")]
+        public void Constructor_ShouldSetData_WhenParameterProvided(string data)
+        {
+            // Arrange & act
+            var sr = new ServiceResult<string>(data);
+
+            // Assert
+            sr.Data.ShouldBe(data);
+        }
+
+        [Theory]
         [InlineData("test")]
         public void SetData_ShouldSetData(string value)
         {

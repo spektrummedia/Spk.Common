@@ -6,6 +6,11 @@ namespace Spk.Common.Helpers.Service
 {
     public class ServiceResult<T>
     {
+        public ServiceResult(T data)
+        {
+            SetData(data);
+        }
+
         public IEnumerable<string> Errors => _internalErrors;
         public T Data { get; private set; }
 
