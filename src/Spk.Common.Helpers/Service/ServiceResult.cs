@@ -6,21 +6,22 @@ namespace Spk.Common.Helpers.Service
 {
     public class ServiceResult<T>
     {
+        private readonly List<string> _internalErrors;
+
         public ServiceResult(T data)
         {
             SetData(data);
+        }
+
+        public ServiceResult()
+        {
+            _internalErrors = new List<string>();
         }
 
         public IEnumerable<string> Errors => _internalErrors;
         public T Data { get; private set; }
 
         public bool Success => !Errors.Any();
-        private readonly List<string> _internalErrors;
-
-        public ServiceResult()
-        {
-            _internalErrors = new List<string>();
-        }
 
         public void SetData(T data)
         {
