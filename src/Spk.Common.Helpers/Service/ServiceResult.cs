@@ -6,7 +6,7 @@ namespace Spk.Common.Helpers.Service
 {
     public class ServiceResult<T>
     {
-        private readonly List<string> _internalErrors;
+        private readonly List<string> _internalErrors = new List<string>();
 
         public ServiceResult(T data)
         {
@@ -15,7 +15,6 @@ namespace Spk.Common.Helpers.Service
 
         public ServiceResult()
         {
-            _internalErrors = new List<string>();
         }
 
         public IEnumerable<string> Errors => _internalErrors;

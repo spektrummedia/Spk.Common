@@ -19,6 +19,28 @@ namespace Spk.Common.Tests.Helpers.Service
             sr.Data.ShouldBe(data);
         }
 
+        [Fact]
+        public void Constructor_WithData_ShouldInitializeErrorCollection()
+        {
+            // Arrange & act
+            var sr = new ServiceResult<string>("bleh");
+
+            // Assert
+            sr.Errors.ShouldNotBeNull();
+            sr.Errors.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void DefaultConstructor_ShouldInitializeErrorCollection()
+        {
+            // Arrange & act
+            var sr = new ServiceResult<string>();
+
+            // Assert
+            sr.Errors.ShouldNotBeNull();
+            sr.Errors.ShouldBeEmpty();
+        }
+
         [Theory]
         [InlineData("test")]
         public void SetData_ShouldSetData(string value)
