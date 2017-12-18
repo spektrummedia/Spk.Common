@@ -7,6 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <Compile Remove="Service\ServiceResultTests_BACKUP_7344.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
         <PackageReference Include="Moq" Version="4.7.142" />
         <PackageReference Include="Shouldly" Version="3.0.0-beta0003" />
         <PackageReference Include="xunit" Version="2.3.0" />
