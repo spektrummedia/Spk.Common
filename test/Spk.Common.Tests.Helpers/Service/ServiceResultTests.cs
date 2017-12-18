@@ -19,28 +19,6 @@ namespace Spk.Common.Tests.Helpers.Service
             sr.Data.ShouldBe(data);
         }
 
-        [Fact]
-        public void Constructor_WithData_ShouldInitializeErrorCollection()
-        {
-            // Arrange & act
-            var sr = new ServiceResult<string>("bleh");
-
-            // Assert
-            sr.Errors.ShouldNotBeNull();
-            sr.Errors.ShouldBeEmpty();
-        }
-
-        [Fact]
-        public void DefaultConstructor_ShouldInitializeErrorCollection()
-        {
-            // Arrange & act
-            var sr = new ServiceResult<string>();
-
-            // Assert
-            sr.Errors.ShouldNotBeNull();
-            sr.Errors.ShouldBeEmpty();
-        }
-
         [Theory]
         [InlineData("test")]
         public void SetData_ShouldSetData(string value)
@@ -53,6 +31,21 @@ namespace Spk.Common.Tests.Helpers.Service
 
             // Assert
             sr.Data.ShouldBe(value);
+        }
+
+        [Theory]
+        [InlineData("error")]
+        public void GetFirstError_ShouldReturnFirstError(string error)
+        {
+            // Arrange
+            var sr = new ServiceResult();
+
+            // Act
+            sr.AddError(error);
+            sr.AddError("bleh");
+
+            // Assert
+            sr.GetFirstError().ShouldBe(error);
         }
 
         [Theory]
@@ -72,23 +65,50 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
-        public void Success_ShouldBeFalse_WhenErrors()
+        public void AddError_ShouldArgumentNullException_WhenNullError()
         {
-            // Arrange
-            var sr = new ServiceResult<string>();
-
-            // Act
-            sr.AddError("test");
-
-            // Assert
-            sr.Success.ShouldBeFalse();
+            // Act & assert
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                var sr = new ServiceResult();
+                sr.AddError(null);
+            });
         }
 
         [Fact]
-        public void Errors_ShouldRetrivedAllErrors()
+        public void Constructor_WithData_ShouldInitializeErrorCollection()
+        {
+            // Arrange & act
+            var sr = new ServiceResult<string>("bleh");
+
+            // Assert
+            sr.Errors.ShouldNotBeNull();
+            sr.Errors.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Constructor_WithData_ShouldThrow_WhenArgumentIsNull()
+        {
+            // Arrange & act & assert
+            Assert.Throws<ArgumentNullException>(() => new ServiceResult<string>(null));
+        }
+
+        [Fact]
+        public void DefaultConstructor_ShouldInitializeErrorCollection()
+        {
+            // Arrange & act
+            var sr = new ServiceResult<string>();
+
+            // Assert
+            sr.Errors.ShouldNotBeNull();
+            sr.Errors.ShouldBeEmpty();
+        }
+
+        [Fact]
+        public void Errors_ShouldRetriveAllErrors()
         {
             // Arrange
-            var sr = new ServiceResult<string>();
+            var sr = new ServiceResult();
 
             // Act
             sr.AddError("error 1");
@@ -99,30 +119,17 @@ namespace Spk.Common.Tests.Helpers.Service
             sr.Errors.Count().ShouldBe(2);
         }
 
-        [Theory]
-        [InlineData("error")]
-        public void GetFirstError_ShouldReturnFirstError(string error)
+        [Fact]
+        public void Success_ShouldBeFalse_WhenErrors()
         {
             // Arrange
-            var sr = new ServiceResult<string>();
+            var sr = new ServiceResult();
 
             // Act
-            sr.AddError(error);
-            sr.AddError("bleh");
+            sr.AddError("test");
 
             // Assert
-            sr.GetFirstError().ShouldBe(error);
-        }
-
-        [Fact]
-        public void AddError_ShouldArgumentNullException_WhenNullError()
-        {
-            // Act & assert
-            Assert.Throws<ArgumentNullException>(() =>
-            {
-                var sr = new ServiceResult<string>();
-                sr.AddError(null);
-            });
+            sr.Success.ShouldBeFalse();
         }
     }
 }
