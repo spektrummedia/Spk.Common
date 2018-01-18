@@ -79,25 +79,29 @@ namespace Spk.Common.Tests.Helpers.Service
             sr.Success.ShouldBeTrue();
         }
 
-        [Fact]
-        public void AddError_ShouldArgumentNullException_WhenNullError()
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void AddError_ShouldArgumentNullException_WhenNullOrEmptyError(string error)
         {
             // Act & assert
             Assert.Throws<ArgumentException>(() =>
             {
                 var sr = new ServiceResult();
-                sr.AddError(null);
+                sr.AddError(error);
             });
         }
 
-        [Fact]
-        public void AddWarning_ShouldArgumentNullException_WhenNullError()
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void AddWarning_ShouldArgumentNullException_WhenNullOrEmptyError(string warning)
         {
             // Act & assert
             Assert.Throws<ArgumentException>(() =>
             {
                 var sr = new ServiceResult();
-                sr.AddWarning(null);
+                sr.AddWarning(warning);
             });
         }
 
