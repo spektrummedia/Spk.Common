@@ -18,15 +18,20 @@ namespace Spk.Common.Helpers.Service
             _internalErrors.Add(error);
         }
 
+        public string GetFirstError()
+        {
+            return Errors.FirstOrDefault();
+        }
+
         public void AddWarning(string warning)
         {
             warning.GuardIsNotNull(nameof(warning));
             _internalWarnings.Add(warning);
         }
 
-        public string GetFirstError()
+        public string GetFirstWarning()
         {
-            return Errors.FirstOrDefault();
+            return Warnings.FirstOrDefault();
         }
     }
 

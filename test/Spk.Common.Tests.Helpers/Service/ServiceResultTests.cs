@@ -49,6 +49,21 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Theory]
+        [InlineData("warning")]
+        public void GetFirstWarning_ShouldReturnFirstWarning(string warning)
+        {
+            // Arrange
+            var sr = new ServiceResult();
+
+            // Act
+            sr.AddWarning(warning);
+            sr.AddWarning("bleh");
+
+            // Assert
+            sr.GetFirstWarning().ShouldBe(warning);
+        }
+
+        [Theory]
         [InlineData("test")]
         [InlineData("")]
         [InlineData(null)]
