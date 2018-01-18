@@ -83,7 +83,7 @@ namespace Spk.Common.Tests.Helpers.Service
         public void AddError_ShouldArgumentNullException_WhenNullError()
         {
             // Act & assert
-            Assert.Throws<ArgumentNullException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 var sr = new ServiceResult();
                 sr.AddError(null);
@@ -94,7 +94,7 @@ namespace Spk.Common.Tests.Helpers.Service
         public void AddWarning_ShouldArgumentNullException_WhenNullError()
         {
             // Act & assert
-            Assert.Throws<ArgumentNullException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 var sr = new ServiceResult();
                 sr.AddWarning(null);
