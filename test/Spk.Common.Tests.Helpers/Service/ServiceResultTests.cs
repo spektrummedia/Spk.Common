@@ -178,8 +178,8 @@ namespace Spk.Common.Tests.Helpers.Service
             var sr = new ServiceResult();
 
             // Act
-            sr.AddWarning("error 1");
-            sr.AddWarning("error 2");
+            sr.AddWarning("warning 1");
+            sr.AddWarning("warning 2");
 
 
             // Assert
