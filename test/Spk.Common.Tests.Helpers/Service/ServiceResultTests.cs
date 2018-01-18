@@ -120,6 +120,21 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
+        public void Warnings_ShouldRetriveAllWarnings()
+        {
+            // Arrange
+            var sr = new ServiceResult();
+
+            // Act
+            sr.AddWarning("error 1");
+            sr.AddWarning("error 2");
+
+
+            // Assert
+            sr.Warnings.Count().ShouldBe(2);
+        }
+
+        [Fact]
         public void Success_ShouldBeFalse_WhenErrors()
         {
             // Arrange
