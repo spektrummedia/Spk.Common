@@ -6,10 +6,9 @@ namespace Spk.Common.Helpers.Service
 {
     public class ServiceResult
     {
-        private readonly List<string> _internalErrors = new List<string>();
         public IEnumerable<string> Errors => _internalErrors;
-
         public bool Success => !Errors.Any();
+        private readonly List<string> _internalErrors = new List<string>();
 
         public void AddError(string error)
         {
@@ -25,6 +24,8 @@ namespace Spk.Common.Helpers.Service
 
     public class ServiceResult<T> : ServiceResult
     {
+        public T Data { get; private set; }
+
         public ServiceResult(T data)
         {
             SetData(data.GuardIsNotNull(nameof(data)));
@@ -33,8 +34,6 @@ namespace Spk.Common.Helpers.Service
         public ServiceResult()
         {
         }
-
-        public T Data { get; private set; }
 
         public void SetData(T data)
         {
