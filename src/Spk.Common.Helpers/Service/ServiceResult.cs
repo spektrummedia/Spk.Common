@@ -7,10 +7,12 @@ namespace Spk.Common.Helpers.Service
     public class ServiceResult
     {
         public IEnumerable<string> Errors => _internalErrors;
-        public IEnumerable<string> Warnings => _internalWarnings;
-        public bool Success => !Errors.Any();
         private readonly List<string> _internalErrors = new List<string>();
+
+        public IEnumerable<string> Warnings => _internalWarnings;
         private readonly List<string> _internalWarnings = new List<string>();
+
+        public bool Success => !Errors.Any();
 
         public void AddError(string error)
         {
