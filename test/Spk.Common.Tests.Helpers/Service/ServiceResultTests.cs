@@ -76,6 +76,17 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
+        public void AddWarning_ShouldArgumentNullException_WhenNullError()
+        {
+            // Act & assert
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                var sr = new ServiceResult();
+                sr.AddWarning(null);
+            });
+        }
+
+        [Fact]
         public void Constructor_WithData_ShouldInitializeErrorCollection()
         {
             // Arrange & act
