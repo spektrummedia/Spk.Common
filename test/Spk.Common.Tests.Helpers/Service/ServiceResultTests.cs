@@ -131,18 +131,16 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
-        public void Warnings_ShouldRetriveAllWarnings()
+        public void Success_ShouldBeFalse_WhenErrors()
         {
             // Arrange
             var sr = new ServiceResult();
 
             // Act
-            sr.AddWarning("error 1");
-            sr.AddWarning("error 2");
-
+            sr.AddError("test");
 
             // Assert
-            sr.Warnings.Count().ShouldBe(2);
+            sr.Success.ShouldBeFalse();
         }
 
         [Fact]
@@ -159,16 +157,18 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
-        public void Success_ShouldBeFalse_WhenErrors()
+        public void Warnings_ShouldRetriveAllWarnings()
         {
             // Arrange
             var sr = new ServiceResult();
 
             // Act
-            sr.AddError("test");
+            sr.AddWarning("error 1");
+            sr.AddWarning("error 2");
+
 
             // Assert
-            sr.Success.ShouldBeFalse();
+            sr.Warnings.Count().ShouldBe(2);
         }
     }
 }
