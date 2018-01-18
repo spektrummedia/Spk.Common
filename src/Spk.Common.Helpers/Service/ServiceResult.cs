@@ -17,7 +17,7 @@ namespace Spk.Common.Helpers.Service
 
         public void AddError(string error)
         {
-            error.GuardIsNotNull(nameof(error));
+            error.GuardIsNotNullOrWhiteSpace(nameof(error));
             _internalErrors.Add(error);
         }
 
@@ -28,7 +28,7 @@ namespace Spk.Common.Helpers.Service
 
         public void AddWarning(string warning)
         {
-            warning.GuardIsNotNull(nameof(warning));
+            warning.GuardIsNotNullOrWhiteSpace(nameof(warning));
             _internalWarnings.Add(warning);
         }
 
