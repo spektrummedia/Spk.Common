@@ -172,6 +172,19 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
+        public void HasWarnings_ShouldBeTrue_WhenWarnings()
+        {
+            // Arrange
+            var sr = new ServiceResult();
+
+            // Act
+            sr.AddWarning("test");
+
+            // Assert
+            sr.HasWarnings.ShouldBeTrue();
+        }
+
+        [Fact]
         public void Warnings_ShouldRetriveAllWarnings()
         {
             // Arrange

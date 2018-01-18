@@ -13,6 +13,7 @@ namespace Spk.Common.Helpers.Service
         private readonly List<string> _internalWarnings = new List<string>();
 
         public bool Success => !Errors.Any();
+        public bool HasWarnings => Warnings.Any();
 
         public void AddError(string error)
         {
