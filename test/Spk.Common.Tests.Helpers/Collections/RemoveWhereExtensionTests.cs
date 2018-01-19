@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Spk.Common.Helpers.Collection;
 using Xunit;
 
@@ -11,7 +8,7 @@ namespace Spk.Common.Tests.Helpers.Collections
     public class RemoveWhereExtensionTests
     {
         [Fact]
-        public void RemoveWhere_ShouldRemoveOneElement_WhenPredicateMatchesOneElement()
+        public void RemoveWhere_ShouldNotRemoveAnyItems_WhenPredicateIsFalse()
         {
             var data = new List<string>
             {
@@ -21,10 +18,10 @@ namespace Spk.Common.Tests.Helpers.Collections
                 "banane"
             };
 
-            var result = data.RemoveWhere(x => x == "fraise");
+            var result = data.RemoveWhere(x => x == "orange");
 
-            Assert.Equal(3, result.Count);
-            Assert.DoesNotContain("fraise", data);
+            Assert.Equal(data.Count, result.Count);
+            Assert.DoesNotContain("orange", data);
         }
 
         [Fact]
@@ -46,7 +43,7 @@ namespace Spk.Common.Tests.Helpers.Collections
         }
 
         [Fact]
-        public void RemoveWhere_ShouldNotRemoveAnyItems_WhenPredicateIsFalse()
+        public void RemoveWhere_ShouldRemoveOneElement_WhenPredicateMatchesOneElement()
         {
             var data = new List<string>
             {
@@ -56,10 +53,10 @@ namespace Spk.Common.Tests.Helpers.Collections
                 "banane"
             };
 
-            var result = data.RemoveWhere(x => x == "orange");
+            var result = data.RemoveWhere(x => x == "fraise");
 
-            Assert.Equal(data.Count, result.Count);
-            Assert.DoesNotContain("orange", data);
+            Assert.Equal(3, result.Count);
+            Assert.DoesNotContain("fraise", data);
         }
 
         [Fact]
@@ -72,6 +69,13 @@ namespace Spk.Common.Tests.Helpers.Collections
             Assert.Equal(0, result.Count);
         }
 
-
+        [Fact]
+        public void RemoveWhere_ShouldThrows_WhenSourceIsNull()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+            {
+                ((List<string>)null).RemoveWhere(x => x != null);
+            });
+        }
     }
 }

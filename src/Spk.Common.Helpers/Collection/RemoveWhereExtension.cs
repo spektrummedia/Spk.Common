@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Spk.Common.Helpers.Guard;
 
 namespace Spk.Common.Helpers.Collection
 {
@@ -10,6 +11,8 @@ namespace Spk.Common.Helpers.Collection
             this ICollection<TSource> source,
             Func<TSource, bool> predicate)
         {
+            source.GuardIsNotNull(nameof(source));
+
             if (!source.Any())
                 return source;
 
