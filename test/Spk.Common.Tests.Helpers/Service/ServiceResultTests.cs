@@ -150,6 +150,19 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
+        public void HasWarnings_ShouldBeTrue_WhenWarnings()
+        {
+            // Arrange
+            var sr = new ServiceResult();
+
+            // Act
+            sr.AddWarning("test");
+
+            // Assert
+            sr.HasWarnings.ShouldBeTrue();
+        }
+
+        [Fact]
         public void Success_ShouldBeFalse_WhenErrors()
         {
             // Arrange
@@ -176,19 +189,6 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
-        public void HasWarnings_ShouldBeTrue_WhenWarnings()
-        {
-            // Arrange
-            var sr = new ServiceResult();
-
-            // Act
-            sr.AddWarning("test");
-
-            // Assert
-            sr.HasWarnings.ShouldBeTrue();
-        }
-
-        [Fact]
         public void Warnings_ShouldRetriveAllWarnings()
         {
             // Arrange
@@ -198,9 +198,11 @@ namespace Spk.Common.Tests.Helpers.Service
             sr.AddWarning("warning 1");
             sr.AddWarning("warning 2");
 
-
             // Assert
-            sr.Warnings.Count().ShouldBe(2);
+            Assert.Collection(sr.Warnings,
+                x => x.ShouldBe("warning 1"),
+                x => x.ShouldBe("warning 2")
+            );
         }
     }
 }
