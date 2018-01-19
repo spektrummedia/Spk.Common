@@ -1,0 +1,29 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Code-First Mail Builder</h1>
+    <p class="lead">Build beautiful emails that suit your needs in only a few line of codes. Forget all you know about crappy HTML and CSS specific to emails, just write code.</p>
+    <p>@Html.ActionLink("See components", "Components", "Home")</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Demo</h2>
+        <p>
+           Simple Email
+        </p>
+        <p>@Html.ActionLink("See demo", "EmailSimple", "Home")</p>
+    </div>
+  <div class="col-md-4">
+    <h2>Demo</h2>
+    <p>Email with some collumns</p>
+    <p>@Html.ActionLink("See demo", "EmailWithCols", "Home")</p>
+  </div>
+  <div class="col-md-4">
+    <h2>Demo</h2>
+    <p>More complex email</p>
+    <p>@Html.ActionLink("See demo", "EmailComplex", "Home")</p>
+  </div>
+</div>

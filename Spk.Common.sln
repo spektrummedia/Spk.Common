@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8D4155F3-D442-4D9D-AA51-A600AF6E5C40}"
 EndProject
@@ -23,7 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spk.Common.Tests.Helpers", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spk.Common.Tests.Validators", "test\Spk.Common.Tests.Validators\Spk.Common.Tests.Validators.csproj", "{0791E192-E12E-457F-998E-40B9EFF225EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spk.Common.Benchmarks", "test\Spk.Common.Benchmarks\Spk.Common.Benchmarks.csproj", "{33ACE061-8831-45D8-9864-386627E9265B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spk.Common.Benchmarks", "test\Spk.Common.Benchmarks\Spk.Common.Benchmarks.csproj", "{33ACE061-8831-45D8-9864-386627E9265B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spk.Common.Mailing", "Spk.Common.Mailing\Spk.Common.Mailing.csproj", "{17684041-749D-4137-A94C-A607DA6F81AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spk.Common.Mailing.Demo", "Spk.Common.Mailing.Demo\Spk.Common.Mailing.Demo.csproj", "{4E1E12C8-3A07-4EB0-ACD3-EAD2088E8E16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{AA02D3F7-C847-4AB3-95FD-45AACA7F0552}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +57,18 @@ Global
 		{33ACE061-8831-45D8-9864-386627E9265B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33ACE061-8831-45D8-9864-386627E9265B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33ACE061-8831-45D8-9864-386627E9265B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17684041-749D-4137-A94C-A607DA6F81AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17684041-749D-4137-A94C-A607DA6F81AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17684041-749D-4137-A94C-A607DA6F81AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17684041-749D-4137-A94C-A607DA6F81AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E1E12C8-3A07-4EB0-ACD3-EAD2088E8E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E1E12C8-3A07-4EB0-ACD3-EAD2088E8E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E1E12C8-3A07-4EB0-ACD3-EAD2088E8E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E1E12C8-3A07-4EB0-ACD3-EAD2088E8E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA02D3F7-C847-4AB3-95FD-45AACA7F0552}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA02D3F7-C847-4AB3-95FD-45AACA7F0552}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA02D3F7-C847-4AB3-95FD-45AACA7F0552}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA02D3F7-C847-4AB3-95FD-45AACA7F0552}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +79,9 @@ Global
 		{12F000C1-FF48-4099-8FB5-6A6BB4A6EB4D} = {8D4155F3-D442-4D9D-AA51-A600AF6E5C40}
 		{0791E192-E12E-457F-998E-40B9EFF225EF} = {8D4155F3-D442-4D9D-AA51-A600AF6E5C40}
 		{33ACE061-8831-45D8-9864-386627E9265B} = {8D4155F3-D442-4D9D-AA51-A600AF6E5C40}
+		{17684041-749D-4137-A94C-A607DA6F81AD} = {354A7D2B-5951-4ED8-A87B-2FC65D72092C}
+		{4E1E12C8-3A07-4EB0-ACD3-EAD2088E8E16} = {354A7D2B-5951-4ED8-A87B-2FC65D72092C}
+		{AA02D3F7-C847-4AB3-95FD-45AACA7F0552} = {354A7D2B-5951-4ED8-A87B-2FC65D72092C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2029332C-C6D7-4771-B403-A6E96843640E}
