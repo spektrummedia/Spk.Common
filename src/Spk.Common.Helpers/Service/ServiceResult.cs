@@ -6,14 +6,18 @@ namespace Spk.Common.Helpers.Service
 {
     public class ServiceResult
     {
-        private readonly List<string> _internalErrors = new List<string>();
         public IEnumerable<string> Errors => _internalErrors;
+        private readonly List<string> _internalErrors = new List<string>();
+
+        public IEnumerable<string> Warnings => _internalWarnings;
+        private readonly List<string> _internalWarnings = new List<string>();
 
         public bool Success => !Errors.Any();
+        public bool HasWarnings => Warnings.Any();
 
         public void AddError(string error)
         {
-            error.GuardIsNotNull(nameof(error));
+            error.GuardIsNotNullOrWhiteSpace(nameof(error));
             _internalErrors.Add(error);
         }
 
@@ -21,10 +25,23 @@ namespace Spk.Common.Helpers.Service
         {
             return Errors.FirstOrDefault();
         }
+
+        public void AddWarning(string warning)
+        {
+            warning.GuardIsNotNullOrWhiteSpace(nameof(warning));
+            _internalWarnings.Add(warning);
+        }
+
+        public string GetFirstWarning()
+        {
+            return Warnings.FirstOrDefault();
+        }
     }
 
     public class ServiceResult<T> : ServiceResult
     {
+        public T Data { get; private set; }
+
         public ServiceResult(T data)
         {
             SetData(data.GuardIsNotNull(nameof(data)));
@@ -33,8 +50,6 @@ namespace Spk.Common.Helpers.Service
         public ServiceResult()
         {
         }
-
-        public T Data { get; private set; }
 
         public void SetData(T data)
         {
