@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Spk.Common.Helpers.Guard;
 
-namespace Spk.Common.Helpers.Collection
+namespace Spk.Common.Helpers.IEnumerable
 {
     public static class DistinctByExtensions
     {

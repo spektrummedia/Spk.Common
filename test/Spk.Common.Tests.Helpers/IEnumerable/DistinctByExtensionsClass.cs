@@ -1,19 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Spk.Common.Helpers.Collection;
+using Spk.Common.Helpers.IEnumerable;
 using Xunit;
-using Xunit.Sdk;
 
-namespace Spk.Common.Tests.Helpers.Collections
+namespace Spk.Common.Tests.Helpers.IEnumerable
 {
     public class DistinctByExtensionsClass
     {
-        private Person Person1 { get; set; }
-        private Person Person2 { get; set; }
-        private Person Person3 { get; set; }
-        private Person Person4 { get; set; }
-
         public DistinctByExtensionsClass()
         {
             Person1 = new Person
@@ -53,19 +47,18 @@ namespace Spk.Common.Tests.Helpers.Collections
             };
         }
 
-        [Fact]
-        public void DistinctBy_ShouldReturnUniqueValuesAccordingToKeySelector()
+        private Person Person1 { get; }
+        private Person Person2 { get; }
+        private Person Person3 { get; }
+        private Person Person4 { get; }
+
+        public class Person
         {
-            var data = new List<Person>
-            {
-                Person1, // IsDead: false
-                Person2, // IsDead: true
-                Person3  // IsDead: true
-            };
-
-            var distinctData = data.DistinctBy(x => x.IsDead);
-
-            Assert.Equal(2, distinctData.Count());
+            public string Name { get; set; }
+            public string LastName { get; set; }
+            public int Age { get; set; }
+            public bool IsDead { get; set; }
+            public bool IsApprouved { get; set; }
         }
 
         [Fact]
@@ -76,7 +69,7 @@ namespace Spk.Common.Tests.Helpers.Collections
                 Person1, // Name: James,
                 Person2, // Name: Micheal
                 Person3, // Name: Tito
-                Person4  // Names: Bruce
+                Person4 // Names: Bruce
             };
 
             var distinctData = data.DistinctBy(x => x.Name);
@@ -85,18 +78,42 @@ namespace Spk.Common.Tests.Helpers.Collections
         }
 
         [Fact]
-        public void DistinctBy_WithPredicate_ShouldReturnValueThatMatchPredicate()
+        public void DistinctBy_ShouldReturnUniqueValuesAccordingToKeySelector()
         {
             var data = new List<Person>
             {
-                Person1, // IsDead: false, IsApprouved:false,
-                Person4 // IsDead, false, IsApprouved: true
+                Person1, // IsDead: false
+                Person2, // IsDead: true
+                Person3 // IsDead: true
             };
 
-            var distinctData = data.DistinctBy(x => x.IsDead, p => p.IsApprouved);
+            var distinctData = data.DistinctBy(x => x.IsDead);
 
-            Assert.Single(distinctData);
-            Assert.True(distinctData.First().IsApprouved);
+            Assert.Equal(2, distinctData.Count());
+        }
+
+        [Fact]
+        public void DistinctBy_ShouldThrowNullArgumentException_WhenKeySelectorIsNull()
+        {
+            var data = new List<Person>();
+
+            Assert.Throws<ArgumentNullException>(() => data.DistinctBy<Person, string>(null));
+        }
+
+        [Fact]
+        public void DistinctBy_ShouldThrowNullArgumentException_WhenPredicateIsNull()
+        {
+            var data = new List<Person>();
+
+            Assert.Throws<ArgumentNullException>(() => data.DistinctBy(x => x.Name, null));
+        }
+
+        [Fact]
+        public void DistinctBy_ShouldThrowNullArgumentException_WhenSourceIsNull()
+        {
+            var data = (List<Person>)null;
+
+            Assert.Throws<ArgumentNullException>(() => data.DistinctBy(x => x.Name));
         }
 
         [Fact]
@@ -114,35 +131,18 @@ namespace Spk.Common.Tests.Helpers.Collections
         }
 
         [Fact]
-        public void DistinctBy_ShouldThrowNullArgumentException_WhenPredicateIsNull()
+        public void DistinctBy_WithPredicate_ShouldReturnValueThatMatchPredicate()
         {
-            var data = new List<Person>();
+            var data = new List<Person>
+            {
+                Person1, // IsDead: false, IsApprouved:false,
+                Person4 // IsDead, false, IsApprouved: true
+            };
 
-            Assert.Throws<ArgumentNullException>(() => data.DistinctBy(x => x.Name, null));
-        }
+            var distinctData = data.DistinctBy(x => x.IsDead, p => p.IsApprouved);
 
-        [Fact]
-        public void DistinctBy_ShouldThrowNullArgumentException_WhenSourceIsNull()
-        {
-            var data = (List<Person>) null;
-            
-            Assert.Throws<ArgumentNullException>(() => data.DistinctBy(x => x.Name));
-        }
-
-        [Fact]
-        public void DistinctBy_WithPredicate_ShouldThrowNullArgumentException_WhenSourceIsNull()
-        {
-            var data = (List<Person>) null;
-
-            Assert.Throws<ArgumentNullException>(() => data.DistinctBy(x => x.Name, x => x.IsDead));
-        }
-
-        [Fact]
-        public void DistinctBy_ShouldThrowNullArgumentException_WhenKeySelectorIsNull()
-        {
-            var data = new List<Person>();
-
-            Assert.Throws<ArgumentNullException>(() => data.DistinctBy<Person, string>(null));
+            Assert.Single(distinctData);
+            Assert.True((bool) distinctData.First().IsApprouved);
         }
 
         [Fact]
@@ -153,13 +153,12 @@ namespace Spk.Common.Tests.Helpers.Collections
             Assert.Throws<ArgumentNullException>(() => data.DistinctBy<Person, string>(null, x => x.IsDead));
         }
 
-        public class Person
+        [Fact]
+        public void DistinctBy_WithPredicate_ShouldThrowNullArgumentException_WhenSourceIsNull()
         {
-            public string Name { get; set; }
-            public string LastName { get; set; }
-            public int Age { get; set; }
-            public bool IsDead { get; set; }
-            public bool IsApprouved { get; set; }
+            var data = (List<Person>)null;
+
+            Assert.Throws<ArgumentNullException>(() => data.DistinctBy(x => x.Name, x => x.IsDead));
         }
     }
 }
