@@ -16,7 +16,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
                 IsDead = false,
                 LastName = "Bond",
                 Name = "James",
-                IsApprouved = false
+                IsApproved = false
             };
 
             Person2 = new Person
@@ -25,7 +25,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
                 IsDead = true,
                 LastName = "Jackson",
                 Name = "Micheal",
-                IsApprouved = false
+                IsApproved = false
             };
 
             Person3 = new Person
@@ -34,7 +34,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
                 IsDead = true,
                 LastName = "Jackson",
                 Name = "Tito",
-                IsApprouved = false
+                IsApproved = false
             };
 
             Person4 = new Person
@@ -43,7 +43,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
                 IsDead = false,
                 LastName = "Willis",
                 Name = "Bruce",
-                IsApprouved = true
+                IsApproved = true
             };
         }
 
@@ -58,7 +58,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
             public string LastName { get; set; }
             public int Age { get; set; }
             public bool IsDead { get; set; }
-            public bool IsApprouved { get; set; }
+            public bool IsApproved { get; set; }
         }
 
         [Fact]
@@ -135,14 +135,14 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         {
             var data = new List<Person>
             {
-                Person1, // IsDead: false, IsApprouved:false,
-                Person4 // IsDead, false, IsApprouved: true
+                Person1, // IsDead: false, IsApproved: false,
+                Person4 // IsDead, false, IsApproved: true
             };
 
-            var distinctData = data.DistinctBy(x => x.IsDead, p => p.IsApprouved);
+            var distinctData = data.DistinctBy(x => x.IsDead, p => p.IsApproved);
 
             Assert.Single(distinctData);
-            Assert.True((bool) distinctData.First().IsApprouved);
+            Assert.True((bool) distinctData.First().IsApproved);
         }
 
         [Fact]
