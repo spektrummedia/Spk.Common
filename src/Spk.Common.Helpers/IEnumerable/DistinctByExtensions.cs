@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Spk.Common.Helpers.Guard;
+// ReSharper disable PossibleMultipleEnumeration
 
 namespace Spk.Common.Helpers.IEnumerable
 {
