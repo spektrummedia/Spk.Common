@@ -1,19 +1,20 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Shouldly;
 using Spk.Common.Helpers.IEnumerable;
 using Xunit;
 
 namespace Spk.Common.Tests.Helpers.IEnumerable
 {
-    public class DistinctByExtensionsClass
+    public class DistinctByExtensionsTests
     {
-        public DistinctByExtensionsClass()
+        public DistinctByExtensionsTests()
         {
             Person1 = new Person
             {
                 Age = 56,
-                IsDead = false,
+                LovesBeer = false,
                 LastName = "Bond",
                 Name = "James",
                 IsApproved = false
@@ -22,16 +23,16 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
             Person2 = new Person
             {
                 Age = 60,
-                IsDead = true,
+                LovesBeer = true,
                 LastName = "Jackson",
-                Name = "Micheal",
+                Name = "Michael",
                 IsApproved = false
             };
 
             Person3 = new Person
             {
                 Age = 56,
-                IsDead = true,
+                LovesBeer = true,
                 LastName = "Jackson",
                 Name = "Tito",
                 IsApproved = false
@@ -40,7 +41,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
             Person4 = new Person
             {
                 Age = 62,
-                IsDead = false,
+                LovesBeer = false,
                 LastName = "Willis",
                 Name = "Bruce",
                 IsApproved = true
@@ -57,7 +58,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
             public string Name { get; set; }
             public string LastName { get; set; }
             public int Age { get; set; }
-            public bool IsDead { get; set; }
+            public bool LovesBeer { get; set; }
             public bool IsApproved { get; set; }
         }
 
@@ -74,11 +75,16 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
 
             var distinctData = data.DistinctBy(x => x.Name);
 
-            Assert.Equal(4, distinctData.Count());
+            Assert.Collection(
+                distinctData,
+                x => x.ShouldBeSameAs(Person1),
+                x => x.ShouldBeSameAs(Person2),
+                x => x.ShouldBeSameAs(Person3),
+                x => x.ShouldBeSameAs(Person4));
         }
 
         [Fact]
-        public void DistinctBy_ShouldReturnUniqueValuesAccordingToKeySelector()
+        public void DistinctBy_ShouldReturnFirstValueOfEachGroupAccordingToKeySelector()
         {
             var data = new List<Person>
             {
@@ -87,9 +93,12 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
                 Person3 // IsDead: true
             };
 
-            var distinctData = data.DistinctBy(x => x.IsDead);
+            var distinctData = data.DistinctBy(x => x.LovesBeer);
 
-            Assert.Equal(2, distinctData.Count());
+            Assert.Collection(
+                distinctData,
+                x => x.ShouldBeSameAs(Person1),
+                x => x.ShouldBeSameAs(Person2));
         }
 
         [Fact]
@@ -121,13 +130,13 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         {
             var data = new List<Person>
             {
-                Person2, // LastName: Jackson, IsDead: false
-                Person3 // LastName: Jackson, IsDead: false
+                Person2, // LastName: Jackson, LovesBeer: true
+                Person3 // LastName: Jackson, LovesBeer: true
             };
 
-            var distinctData = data.DistinctBy(x => x.LastName, p => !p.IsDead);
+            var distinctData = data.DistinctBy(x => x.LastName, p => !p.LovesBeer);
 
-            Assert.Single(distinctData);
+            Assert.Collection(distinctData, x => x.ShouldBeSameAs(Person2));
         }
 
         [Fact]
@@ -135,14 +144,13 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         {
             var data = new List<Person>
             {
-                Person1, // IsDead: false, IsApproved: false,
-                Person4 // IsDead, false, IsApproved: true
+                Person1, // LovesBeer: false, IsApproved: false,
+                Person4 // LovesBeer, false, IsApproved: true
             };
 
-            var distinctData = data.DistinctBy(x => x.IsDead, p => p.IsApproved);
+            var distinctData = data.DistinctBy(x => x.LovesBeer, p => p.IsApproved);
 
-            Assert.Single(distinctData);
-            Assert.True((bool) distinctData.First().IsApproved);
+            Assert.Collection(distinctData, x => x.ShouldBeSameAs(Person4));
         }
 
         [Fact]
@@ -150,7 +158,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         {
             var data = new List<Person>();
 
-            Assert.Throws<ArgumentNullException>(() => data.DistinctBy<Person, string>(null, x => x.IsDead));
+            Assert.Throws<ArgumentNullException>(() => data.DistinctBy<Person, string>(null, x => x.LovesBeer));
         }
 
         [Fact]
@@ -158,7 +166,7 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
         {
             var data = (List<Person>)null;
 
-            Assert.Throws<ArgumentNullException>(() => data.DistinctBy(x => x.Name, x => x.IsDead));
+            Assert.Throws<ArgumentNullException>(() => data.DistinctBy(x => x.Name, x => x.LovesBeer));
         }
     }
 }
