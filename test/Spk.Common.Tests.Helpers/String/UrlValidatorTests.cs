@@ -1,7 +1,7 @@
-using Spk.Common.Validators.String;
+using Spk.Common.Helpers.String;
 using Xunit;
 
-namespace Spk.Common.Tests.Validators.String
+namespace Spk.Common.Tests.Helpers.String
 {
     public class UrlValidatorTests
     {
