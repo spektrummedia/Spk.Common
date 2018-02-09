@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Spk.Common.Helpers.String
 {
@@ -149,6 +152,46 @@ namespace Spk.Common.Helpers.String
         {
             
             return s.Split(new [] { separator }, splitOptions);
+        }
+
+        /// <summary>
+        ///     Uses string.Format to safely format a string even if some {data markers} are not matched
+        /// </summary>
+        /// <param name="s">The string to format</param>
+        /// <param name="data">Object with data</param>
+        /// <returns></returns>
+        public static string FormatWith(this string s, object data)
+        {
+            if (s == null)
+                throw new ArgumentNullException("format");
+
+            Regex r = new Regex(@"(?<start>\{)+(?<property>[\w\.\[\]]+)(?<format>:[^}]+)?(?<end>\})+",
+                RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+
+            List<object> values = new List<object>();
+            string rewrittenFormat = r.Replace(s, delegate (Match m)
+            {
+                Group startGroup = m.Groups["start"];
+                Group propertyGroup = m.Groups["property"];
+                Group formatGroup = m.Groups["format"];
+                Group endGroup = m.Groups["end"];
+
+                var value = (propertyGroup.Value == "0")
+                    ? data
+                    : data.GetType().GetProperty(propertyGroup.Value)?.GetValue(data);
+
+                if (value != null)
+                {
+                    values.Add(value);
+
+                    return new string('{', startGroup.Captures.Count) + (values.Count - 1) + formatGroup.Value
+                           + new string('}', endGroup.Captures.Count);
+                }
+
+                return "";
+            });
+
+            return string.Format(rewrittenFormat, values.ToArray());
         }
     }
 }
