@@ -79,5 +79,15 @@ namespace Spk.Common.Tests.Helpers.Localization
             CultureInfo nullCulture = null;
             Assert.Throws<ArgumentNullException>(() => new CultureScope(nullCulture));
         }
+
+        [Fact]
+        public void ShouldApplyCulture_OnCtor()
+        {
+            var culture = new CultureInfo("en-US");
+            using (var cultureScope = new CultureScope(culture))
+            {
+                culture.ShouldBe(culture);
+            }
+        }
     }
 }
