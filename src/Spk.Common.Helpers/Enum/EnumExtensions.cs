@@ -17,7 +17,7 @@ namespace Spk.Common.Helpers.Enum
 
             var memberInfo = type.GetMember(element.ToString());
 
-            if (memberInfo.Length <= 0) return element.ToString();
+            if (memberInfo.Length <= 0) return string.Empty;
 
             var attributes = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
 

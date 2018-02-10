@@ -20,7 +20,7 @@ namespace Spk.Common.Tests.Helpers.Collection
             var target = new List<string>();
             var actionTrigger = false;
 
-            target.SynchronizeWith(source,
+            target.SynchronizeWith<string>(source,
                 item => actionTrigger = true);
 
             target.Count.ShouldBe(2);
