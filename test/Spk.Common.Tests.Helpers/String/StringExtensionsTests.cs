@@ -48,6 +48,16 @@ namespace Spk.Common.Tests.Helpers.String
         }
 
         [Fact]
+        public void RemoveDiacritics_ShouldReturnInstanceIfNullOrWhitespace()
+        {
+            var fakeDiacritics = string.Empty;
+
+            fakeDiacritics.RemoveDiacritics();
+
+            fakeDiacritics.ShouldBe(string.Empty);
+        }
+
+        [Fact]
         public void ToBoolean_ShouldConvertProperly()
         {
             Assert.True("true".ToBoolean());

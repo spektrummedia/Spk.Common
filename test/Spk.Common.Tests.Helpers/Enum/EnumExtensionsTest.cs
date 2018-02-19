@@ -15,6 +15,17 @@ namespace Spk.Common.Tests.Helpers.Enum
             Test2 = 1
         }
 
+        private enum EmptyEnum
+        {
+        }
+
+        [Fact]
+        public void GetDescription_ShouldReturnDescriptionIsNull_WhenEnumIsEmpty()
+        {
+            var test = new EmptyEnum();
+            test.GetDescription().ShouldBe(string.Empty);
+        }
+
         [Flags]
         private enum FlagsEnum
         {
