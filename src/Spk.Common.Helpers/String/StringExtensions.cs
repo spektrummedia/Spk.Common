@@ -178,7 +178,7 @@ namespace Spk.Common.Helpers.String
 
                 var value = (propertyGroup.Value == "0")
                     ? data
-                    : data.GetType().GetProperty(propertyGroup.Value)?.GetValue(data);
+                    : data?.GetType().GetProperty(propertyGroup.Value)?.GetValue(data);
 
                 if (value != null)
                 {
