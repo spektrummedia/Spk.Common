@@ -1,6 +1,6 @@
 using System;
 
-namespace Spk.Common.Validators.String
+namespace Spk.Common.Helpers.String
 {
     public static class UrlValidator
     {

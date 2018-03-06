@@ -48,6 +48,16 @@ namespace Spk.Common.Tests.Helpers.String
         }
 
         [Fact]
+        public void RemoveDiacritics_ShouldReturnInstanceIfNullOrWhitespace()
+        {
+            var fakeDiacritics = string.Empty;
+
+            fakeDiacritics.RemoveDiacritics();
+
+            fakeDiacritics.ShouldBe(string.Empty);
+        }
+
+        [Fact]
         public void ToBoolean_ShouldConvertProperly()
         {
             Assert.True("true".ToBoolean());
@@ -127,6 +137,107 @@ namespace Spk.Common.Tests.Helpers.String
             var splitByStringResult = stringToSplit.Split(separator.ToString(), splitOptions: StringSplitOptions.None);
             var splitByCharResult = stringToSplit.Split(separator);
             splitByStringResult.ShouldBe(splitByCharResult);
+        }
+
+        [Fact]
+        public void FormatWith_ShouldFormat_WhenPerfectMatchWithData()
+        {
+            var stringToFormat = "My name is {firstName} {lastName}, I am {age} years old.";
+            var data = new
+            {
+                firstName = "François",
+                lastName = "LN",
+                age = 28
+            };
+
+            Assert.Equal("My name is François LN, I am 28 years old.", stringToFormat.FormatWith(data));
+        }
+
+        [Fact]
+        public void FormatWith_ShouldFormat_WithNullData()
+        {
+            var stringToFormat = "My name is {firstName} {lastName}, I am {age} years old.";
+            var data = new
+            {
+                firstName = (string) null,
+                lastName = "LN",
+                age = 28
+            };
+
+            Assert.Equal("My name is  LN, I am 28 years old.", stringToFormat.FormatWith(data));
+        }
+
+        [Fact]
+        public void FormatWith_ShouldFormat_WithDoubleData()
+        {
+            var stringToFormat = "My name is {firstName} {lastName}, I am {age} years old. {age}";
+            var data = new
+            {
+                firstName = "François",
+                lastName = "LN",
+                age = 28
+            };
+
+            Assert.Equal("My name is François LN, I am 28 years old. 28", stringToFormat.FormatWith(data));
+        }
+
+        [Fact]
+        public void FormatWith_ShouldFormat_WhenExtraDataMarkerInString()
+        {
+            var stringToFormat = "My name is {firstName} {lastName}, I am {age} years old.";
+            var data = new
+            {
+                firstName = "François",
+                lastName = "LN",
+            };
+
+            Assert.Equal("My name is François LN, I am  years old.", stringToFormat.FormatWith(data));
+        }
+
+        [Fact]
+        public void FormatWith_ShouldFormat_WhenExtraDataInObject()
+        {
+            var stringToFormat = "My name is {firstName} {lastName}.";
+            var data = new
+            {
+                firstName = "François",
+                lastName = "LN",
+                age = 28
+            };
+
+            Assert.Equal("My name is François LN.", stringToFormat.FormatWith(data));
+        }
+
+        [Fact]
+        public void FormatWith_ShouldFormat_WithEmptyString()
+        {
+            var stringToFormat = "";
+            var data = new
+            {
+                firstName = "François",
+                lastName = "LN",
+                age = 28
+            };
+
+            Assert.Equal("", stringToFormat.FormatWith(data));
+        }
+
+        [Fact]
+        public void FormatWith_ShouldFormat_WithNoData()
+        {
+            var stringToFormat = "My name real name is Olivier {var}.";
+            var data = new {};
+
+            Assert.Equal("My name real name is Olivier .", stringToFormat.FormatWith(data));
+        }
+
+        [Fact]
+        public void FormatWith_ShouldFormat_WithNull()
+        {
+            var stringToFormat = "My name real name is Olivier {var}.";
+            object data = null;
+
+            Assert.Equal("My name real name is Olivier .", stringToFormat.FormatWith(data));
         }
     }
 }

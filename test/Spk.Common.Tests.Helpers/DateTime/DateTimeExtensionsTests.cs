@@ -14,6 +14,13 @@ namespace Spk.Common.Tests.Helpers.DateTime
         }
 
         [Fact]
+        public void ToEpochTime_ShouldReturnNullWhenValueIsNull()
+        {
+            System.DateTime? value = null;
+            value.ToEpochTime().ShouldBe(null);
+        }
+
+        [Fact]
         public void IsWorkingDay_ShouldReturnTrue_WhenWorkingDay()
         {
             // 2018/01/01 is a monday

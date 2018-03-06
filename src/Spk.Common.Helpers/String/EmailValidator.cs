@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Spk.Common.Validators.String
+namespace Spk.Common.Helpers.String
 {
     public static class EmailValidator
     {
