@@ -5,8 +5,8 @@
         <Authors>spektrummedia</Authors>
         <Company>Spektrum Media</Company>
         <PackageIconUrl>https://avatars1.githubusercontent.com/u/13052913</PackageIconUrl>
-        <RepositoryUrl>https://github.com/spektrummedia/Spk.Common</RepositoryUrl>
-        <Version>1.7.0</Version>
+        <RepositoryUrl>https://github.com/spektrumgeeks/Spk.Common</RepositoryUrl>
+        <Version>1.8.0</Version>
         <Description>Library exposing code used in multiple projects.</Description>
     </PropertyGroup>
     <PropertyGroup>
