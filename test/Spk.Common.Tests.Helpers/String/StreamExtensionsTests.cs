@@ -7,38 +7,20 @@ namespace Spk.Common.Tests.Helpers.String
 {
     public class StreamExtensionsTests
     {
-        [Fact]
-        public async void ToStream_ShouldTransformTheStringProperly()
+        [Theory]
+        [InlineData("Hello World")]
+        [InlineData("")]
+        public async void ToStream_ShouldTransformTheStringProperly(string input)
         {
-            // Arrange
-            var expectedMessage = "Hello World";
-
             // Act
-            var streamUnderTest = expectedMessage.ToStream();
+            var streamUnderTest = input.ToStream();
 
             // Assert
             streamUnderTest.ShouldNotBeNull();
             var streamReader = new StreamReader(streamUnderTest);
             var message = await streamReader.ReadToEndAsync();
 
-            message.ShouldBe(expectedMessage);
-        }
-
-        [Fact]
-        public async void ToStream_ShouldTransformEmptyStringProperly()
-        {
-            // Arrange
-            var expectedMessage = "";
-
-            // Act
-            var streamUnderTest = expectedMessage.ToStream();
-
-            // Assert
-            streamUnderTest.ShouldNotBeNull();
-            var streamReader = new StreamReader(streamUnderTest);
-            var message = await streamReader.ReadToEndAsync();
-
-            message.ShouldBe(expectedMessage);
+            message.ShouldBe(input);
         }
     }
 
