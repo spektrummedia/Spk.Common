@@ -9,32 +9,36 @@ namespace Spk.Common.Tests.Helpers.String.Comparers
     {
         [Theory]
         [InlineData("1", "-1")]
+        [InlineData("10", "9")]
         [InlineData("test", "0")]
-        [InlineData(null, "1")]
+        [InlineData("test", null)]
+        [InlineData(null, "0")]
         public void Compare_ShouldReturnGreater_WhenFirstParamGreaterThanSecondParam(string str1, string str2)
         {
             // Arrange & assert
-            new AlphaNumericComparer().Compare(str1, str2).ShouldBe(1);
+            new AlphaIntComparer().Compare(str1, str2).ShouldBe(1);
         }
 
         [Theory]
         [InlineData("0", "0")]
         [InlineData("string", "string")]
+        [InlineData(null, null)]
         public void Compare_ShouldReturnEquality_WhenFirstParamEqualsSecondParam(string str1, string str2)
         {
             // Arrange & assert
-            new AlphaNumericComparer().Compare(str1, str2).ShouldBe(0);
+            new AlphaIntComparer().Compare(str1, str2).ShouldBe(0);
         }
 
         [Theory]
+        [InlineData("-1", "1")]
         [InlineData("9", "10")]
-        [InlineData("0", "10")]
         [InlineData("0", "test")]
         [InlineData(null, "test")]
+        [InlineData("0", null)]
         public void Compare_ShouldReturnLess_WhenFirstParamLessThanSecondParam(string str1, string str2)
         {
             // Arrange & assert
-            new AlphaNumericComparer().Compare(str1, str2).ShouldBe(-1);
+            new AlphaIntComparer().Compare(str1, str2).ShouldBe(-1);
         }
 
         [Fact]
@@ -44,7 +48,7 @@ namespace Spk.Common.Tests.Helpers.String.Comparers
             var toBeOrdered = new[] {"10", "1", "2"};
 
             // Act
-            var result = toBeOrdered.OrderBy(x => x, new AlphaNumericComparer());
+            var result = toBeOrdered.OrderBy(x => x, new AlphaIntComparer());
 
             // Assert
             Assert.Collection(result,
@@ -61,7 +65,7 @@ namespace Spk.Common.Tests.Helpers.String.Comparers
             var toBeOrdered = new[] {"test", "1", null};
 
             // Act
-            var result = toBeOrdered.OrderBy(x => x, new AlphaNumericComparer());
+            var result = toBeOrdered.OrderBy(x => x, new AlphaIntComparer());
 
             // Assert
             Assert.Collection(result,
@@ -78,7 +82,7 @@ namespace Spk.Common.Tests.Helpers.String.Comparers
             var toBeOrdered = new[] {"test", "a", "10", "2"};
 
             // Act
-            var result = toBeOrdered.OrderBy(x => x, new AlphaNumericComparer());
+            var result = toBeOrdered.OrderBy(x => x, new AlphaIntComparer());
 
             // Assert
             Assert.Collection(result,

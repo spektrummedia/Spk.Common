@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 namespace Spk.Common.Helpers.String.Comparers
 {
-    public class AlphaNumericComparer : IComparer<string>
+    public class AlphaIntComparer : IComparer<string>
     {
         public int Compare(string s1, string s2)
         {
@@ -37,7 +38,8 @@ namespace Spk.Common.Helpers.String.Comparers
                 return 1;
             }
 
+            // ReSharper disable once StringCompareIsCultureSpecific.3
             return string.Compare(s1, s2, true);
-        }
+        }   
     }
 }
