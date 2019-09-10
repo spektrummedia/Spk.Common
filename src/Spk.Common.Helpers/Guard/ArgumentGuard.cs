@@ -923,5 +923,21 @@ namespace Spk.Common.Helpers.Guard
 
             return argument;
         }
+
+        /// <summary>
+        /// Guards that <paramref name="argument"/> not empty
+        /// </summary>
+        /// <param name="argument">the argument being guarded</param>
+        /// <param name="paramName">the name of the param being tested. This is used when <exception cref="ArgumentException"> throwing</exception></param>
+        /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
+        public static Guid GuardGuidIsNotEmpty(this Guid argument, string paramName)
+        {
+            if (argument == Guid.Empty)
+            {
+                throw new ArgumentException("Must not be empty", paramName);
+            }
+
+            return argument;
+        }
     }
 }
