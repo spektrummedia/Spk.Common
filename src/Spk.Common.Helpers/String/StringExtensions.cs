@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 
 namespace Spk.Common.Helpers.String
 {
@@ -16,6 +16,7 @@ namespace Spk.Common.Helpers.String
         /// </summary>
         /// <param name="s">The string to check</param>
         /// <returns></returns>
+        [ContractAnnotation("null => true")]
         public static bool IsNullOrEmpty(this string s) => string.IsNullOrEmpty(s);
 
         /// <summary>
@@ -23,6 +24,7 @@ namespace Spk.Common.Helpers.String
         /// </summary>
         /// <param name="s">The string to check</param>
         /// <returns></returns>
+        [ContractAnnotation("null => true")]
         public static bool IsNullOrWhiteSpace(this string s) => string.IsNullOrWhiteSpace(s);
 
         /// <summary>
@@ -30,6 +32,7 @@ namespace Spk.Common.Helpers.String
         /// </summary>
         /// <param name="s">The string to check</param>
         /// <returns></returns>
+        [ContractAnnotation("null => false")]
         public static bool HasValue(this string s) => !IsNullOrEmpty(s);
 
         /// <summary>
@@ -103,7 +106,7 @@ namespace Spk.Common.Helpers.String
         /// <summary>
         ///     Remove accents from a string.
         /// </summary>
-        /// <param name="s">The string to process.</param>
+        /// <param name="text">The string to process.</param>
         /// <returns></returns>
         public static string RemoveDiacritics(this string text)
         {
@@ -144,6 +147,7 @@ namespace Spk.Common.Helpers.String
         /// </summary>
         /// <param name="s">The string to truncate</param>
         /// <param name="separator">String separator</param>
+        /// <param name="splitOptions">String splitting options</param>
         /// <returns></returns>
         public static string[] Split(
             this string s,
@@ -163,7 +167,7 @@ namespace Spk.Common.Helpers.String
         public static string FormatWith(this string s, object data)
         {
             if (s == null)
-                throw new ArgumentNullException("format");
+                throw new ArgumentNullException(nameof(s));
 
             Regex r = new Regex(@"(?<start>\{)+(?<property>[\w\.\[\]]+)(?<format>:[^}]+)?(?<end>\})+",
                 RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
