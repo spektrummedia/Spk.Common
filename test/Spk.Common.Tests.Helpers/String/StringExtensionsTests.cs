@@ -1,4 +1,6 @@
 using System;
+using System.Globalization;
+using System.Threading;
 using Shouldly;
 using Spk.Common.Helpers.String;
 using Xunit;
@@ -67,12 +69,14 @@ namespace Spk.Common.Tests.Helpers.String
         [Fact]
         public void ToDecimal_ShouldConvertProperly()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
             Assert.Equal(42.01m, "42.01".ToDecimal());
         }
 
         [Fact]
         public void ToFloat_ShouldConvertProperly()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-CA");
             Assert.Equal(42.01f, "42.01".ToFloat());
         }
 
