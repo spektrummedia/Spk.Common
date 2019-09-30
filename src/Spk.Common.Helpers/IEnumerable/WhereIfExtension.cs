@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Spk.Common.Helpers.IEnumerable
 {
@@ -16,15 +17,20 @@ namespace Spk.Common.Helpers.IEnumerable
             bool condition,
             Func<TSource, bool> predicate)
         {
-            if (condition)
-            {
-                if (source != null)
-                {
-                    return source.Where(predicate);
-                }
-            }
+            return condition && source != null ? source.Where(predicate) : source;
+        }
 
-            return source;
+        /// <summary>
+        ///     Used when data needs to be filtered depending on a condition, using .Where() method.
+        ///     If the condition fails, original source is returned.
+        ///     If the condition pass, filtered source is returned.
+        /// </summary>
+        public static IQueryable<TSource> WhereIf<TSource>(
+            this IQueryable<TSource> source,
+            bool condition,
+            Expression<Func<TSource, bool>> predicate)
+        {
+            return condition && source != null ? source.Where(predicate) : source;
         }
     }
 }

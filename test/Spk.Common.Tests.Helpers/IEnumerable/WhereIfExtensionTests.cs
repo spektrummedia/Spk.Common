@@ -7,43 +7,66 @@ namespace Spk.Common.Tests.Helpers.IEnumerable
 {
     public class WhereIfExtensionTests
     {
-        [Fact]
-        public void WhereIf_ShouldReturn_WhenConditionIsFalse()
+        [InlineData(true)]
+        [InlineData(false)]
+        [Theory]
+        public void WhereIf_ShouldReturn_WhenConditionIsFalse(bool isQueryable)
         {
-            var data = new List<string>
+            // Arrange
+            List<string> data = new List<string>
             {
                 "test",
                 "data",
                 "halleyhop",
                 "blabla"
             };
-            var result = data.WhereIf(false, x => x.Equals("data"));
 
+            // Act
+            IEnumerable<string> result = isQueryable
+                ? data.AsQueryable().WhereIf(false, x => x.Equals("data"))
+                : data.WhereIf(false, x => x.Equals("data"));
+
+            // Assert
             Assert.Equal(4, result.Count());
-            Assert.True(Equals(result, data));
+            Assert.True(result.SequenceEqual(data));
         }
 
-        [Fact]
-        public void WhereIf_ShouldReturn_WhenConditionIsTrue()
+        [InlineData(true)]
+        [InlineData(false)]
+        [Theory]
+        public void WhereIf_ShouldReturn_WhenConditionIsTrue(bool isQueryable)
         {
-            var data = new List<string>
+            // Arrange
+            List<string> data = new List<string>
             {
                 "test",
                 "data",
                 "halleyhop",
                 "blabla"
             };
-            var result = data.WhereIf(data.Count == 4, x => x.Equals("test"));
+
+            // Act
+            IEnumerable<string> result = isQueryable
+                ? data.AsQueryable().WhereIf(data.Count == 4, x => x.Equals("test"))
+                : data.WhereIf(data.Count == 4, x => x.Equals("test"));
+
+            // Assert
             Assert.Single(result);
             Assert.Equal("test", result.First());
         }
 
         [Fact]
-        public void WhereIf_ShouldReturnNull_WhenSourceIsNull()
+        public void WhereIf_ShouldReturnNull_WhenIEnumerableSourceIsNull()
         {
             List<string> data = null;
-            var result = data.WhereIf(true, x => x.Equals("data"));
-            Assert.Null(result);
+            Assert.Null(data.WhereIf(true, x => x.Equals("data")));
+        }
+
+        [Fact]
+        public void WhereIf_ShouldReturnNull_WhenIQueryableSourceIsNull()
+        {
+            IQueryable<string> data = null;
+            Assert.Null(data.WhereIf(true, x => x.Equals("data")));
         }
     }
 }
