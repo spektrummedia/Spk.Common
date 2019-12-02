@@ -135,7 +135,7 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
-        public void Errors_ShouldRetriveAllErrors()
+        public void Errors_ShouldRetrieveAllErrors()
         {
             // Arrange
             var sr = new ServiceResult();
@@ -189,7 +189,7 @@ namespace Spk.Common.Tests.Helpers.Service
         }
 
         [Fact]
-        public void Warnings_ShouldRetriveAllWarnings()
+        public void Warnings_ShouldRetrieveAllWarnings()
         {
             // Arrange
             var sr = new ServiceResult();
@@ -202,6 +202,37 @@ namespace Spk.Common.Tests.Helpers.Service
             Assert.Collection(sr.Warnings,
                 x => x.ShouldBe("warning 1"),
                 x => x.ShouldBe("warning 2")
+            );
+        }
+
+        [Fact]
+        public void Succeed_ShouldReturnResultWithSuccess()
+        {
+            // Act && assert
+            ServiceResult.Succeed().Success.ShouldBeTrue();
+        }
+
+        [Fact]
+        public void Succeed_ShouldSetData()
+        {
+            // Act
+            var result = ServiceResult<string>.Succeed("result");
+
+            // Act && assert
+            result.Success.ShouldBeTrue();
+            result.Data.ShouldBe("result");
+        }
+
+        [Fact]
+        public void Failed_ShouldRetrieveAllErrors()
+        {
+            // Act
+            var sr = ServiceResult.Failed("error 1", "error 2");
+
+            // Assert
+            Assert.Collection(sr.Errors,
+                x => x.ShouldBe("error 1"),
+                x => x.ShouldBe("error 2")
             );
         }
     }

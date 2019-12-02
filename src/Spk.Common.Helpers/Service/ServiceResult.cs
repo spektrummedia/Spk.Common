@@ -36,6 +36,23 @@ namespace Spk.Common.Helpers.Service
         {
             return Warnings.FirstOrDefault();
         }
+
+        public static ServiceResult Succeed()
+        {
+            return new ServiceResult();
+        }
+
+        public static ServiceResult Failed(params string[] errors)
+        {
+            var result = new ServiceResult();
+            if (errors != null)
+            {
+                foreach (var error in errors)
+                    result.AddError(error);
+            }
+
+            return result;
+        }
     }
 
     public class ServiceResult<T> : ServiceResult
@@ -54,6 +71,13 @@ namespace Spk.Common.Helpers.Service
         public void SetData(T data)
         {
             Data = data;
+        }
+
+        public static ServiceResult<T> Succeed(T data)
+        {
+            var result = new ServiceResult<T>();
+            result.SetData(data);
+            return result;
         }
     }
 }
