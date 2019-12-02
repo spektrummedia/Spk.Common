@@ -75,9 +75,7 @@ namespace Spk.Common.Helpers.Service
 
         public static ServiceResult<T> Succeed(T data)
         {
-            var result = new ServiceResult<T>();
-            result.SetData(data);
-            return result;
+            return new ServiceResult<T>(data);
         }
     }
 }
