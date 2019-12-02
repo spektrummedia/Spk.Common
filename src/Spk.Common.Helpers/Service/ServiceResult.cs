@@ -76,5 +76,16 @@ namespace Spk.Common.Helpers.Service
         {
             return new ServiceResult<T>(data);
         }
+
+        public new static ServiceResult<T> Failed(params string[] errors)
+        {
+            var result = new ServiceResult<T>();
+            if (errors != null)
+            {
+                foreach (var error in errors)
+                    result.AddError(error);
+            }
+            return result;
+        }
     }
 }

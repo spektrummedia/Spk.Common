@@ -219,6 +219,7 @@ namespace Spk.Common.Tests.Helpers.Service
             var result = ServiceResult<string>.Succeed("result");
 
             // Assert
+            result.ShouldBeOfType<ServiceResult<string>>();
             result.Success.ShouldBeTrue();
             result.Data.ShouldBe("result");
         }
@@ -234,6 +235,14 @@ namespace Spk.Common.Tests.Helpers.Service
                 x => x.ShouldBe("error 1"),
                 x => x.ShouldBe("error 2")
             );
+        }
+
+        [Fact]
+        public void Failed_ShouldReturnWithType()
+        {
+            // Act && assert
+            ServiceResult<string>.Failed("error 1", "error 2")
+                .ShouldBeOfType<ServiceResult<string>>();
         }
     }
 }
