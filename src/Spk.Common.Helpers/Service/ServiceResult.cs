@@ -50,7 +50,6 @@ namespace Spk.Common.Helpers.Service
                 foreach (var error in errors)
                     result.AddError(error);
             }
-
             return result;
         }
     }
