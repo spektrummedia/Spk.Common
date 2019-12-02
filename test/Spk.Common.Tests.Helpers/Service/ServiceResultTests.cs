@@ -218,7 +218,7 @@ namespace Spk.Common.Tests.Helpers.Service
             // Act
             var result = ServiceResult<string>.Succeed("result");
 
-            // Act && assert
+            // Assert
             result.Success.ShouldBeTrue();
             result.Data.ShouldBe("result");
         }
