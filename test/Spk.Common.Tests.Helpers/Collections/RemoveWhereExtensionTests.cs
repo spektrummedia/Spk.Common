@@ -7,66 +7,11 @@ namespace Spk.Common.Tests.Helpers.Collections
 {
     public class RemoveWhereExtensionTests
     {
-        [Fact]
-        public void RemoveWhere_ShouldNotRemoveAnyItems_WhenPredicateIsFalse()
+        private readonly List<string> _data;
+
+        public RemoveWhereExtensionTests()
         {
-            var data = new List<string>
-            {
-                "pomme",
-                "fraise",
-                "raisin",
-                "banane"
-            };
-
-            var result = data.RemoveWhere(x => x == "orange");
-
-            Assert.Equal(data.Count, result.Count);
-            Assert.DoesNotContain("orange", data);
-        }
-
-        [Fact]
-        public void RemoveWhere_ShouldRemoveAllElementsThatMatchesThePredicate()
-        {
-            var data = new List<string>
-            {
-                "pomme",
-                "fraise",
-                "raisin",
-                "banane"
-            };
-
-            var result = data.RemoveWhere(x => x == "fraise" || x == "banane");
-
-            Assert.Equal(2, result.Count);
-            Assert.DoesNotContain("fraise", data);
-            Assert.DoesNotContain("banane", data);
-        }
-
-        [Fact]
-        public void RemoveWhere_ShouldRemoveOneElement_WhenPredicateMatchesOneElement()
-        {
-            var data = new List<string>
-            {
-                "pomme",
-                "fraise",
-                "raisin",
-                "banane"
-            };
-
-            var result = data.RemoveWhere(x => x == "fraise");
-
-            Assert.Equal(3, result.Count);
-            Assert.DoesNotContain("fraise", data);
-        }
-
-        [Fact]
-        public void RemoveWhere_ShouldReturn_WhenSourceIsEmpty()
-        {
-            var data = new List<string>();
-
-            var result = data.RemoveWhere(x => x == "fraise" || x == "banane");
-
-            Assert.Equal(0, result.Count);
+            _data = new List<string> {"pomme", "fraise", "raisin", "banane"};
         }
 
         [Fact]
@@ -74,8 +19,55 @@ namespace Spk.Common.Tests.Helpers.Collections
         {
             Assert.Throws<ArgumentNullException>(() =>
             {
-                ((List<string>)null).RemoveWhere(x => x != null);
+                ((List<string>)null).RemoveWhere(x => true);
             });
+        }
+
+        [Fact]
+        public void RemoveWhere_ShouldNotRemoveAnyItems_WhenPredicateIsFalse()
+        {
+            // Act
+            var result = _data.RemoveWhere(x => x == "orange");
+
+            // Assert
+            Assert.Equal(_data.Count, result.Count);
+            Assert.DoesNotContain("orange", _data);
+        }
+
+        [Fact]
+        public void RemoveWhere_ShouldRemoveAllElementsThatMatchesThePredicate()
+        {
+            // Act
+            var result = _data.RemoveWhere(x => x == "fraise" || x == "banane");
+
+            // Assert
+            Assert.Equal(2, result.Count);
+            Assert.DoesNotContain("fraise", _data);
+            Assert.DoesNotContain("banane", _data);
+        }
+
+        [Fact]
+        public void RemoveWhere_ShouldRemoveOneElement_WhenPredicateMatchesOneElement()
+        {
+            // Act
+            var result = _data.RemoveWhere(x => x == "fraise");
+
+            // Assert
+            Assert.Equal(3, result.Count);
+            Assert.DoesNotContain("fraise", _data);
+        }
+
+        [Fact]
+        public void RemoveWhere_ShouldReturn_WhenSourceIsEmpty()
+        {
+            // Arrange
+            var data = new List<string>();
+
+            // Act
+            var result = data.RemoveWhere(x => x == "fraise" || x == "banane");
+
+            // Assert
+            Assert.Equal(0, result.Count);
         }
     }
 }
