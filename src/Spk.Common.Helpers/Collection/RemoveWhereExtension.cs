@@ -16,14 +16,23 @@ namespace Spk.Common.Helpers.Collection
             if (!source.Any())
                 return source;
 
-            var elements = source.Where(predicate).ToList();
-            foreach (var element in elements)
+            if (source is IList<TSource> list)
             {
-                source.Remove(element);
+                for (int i = list.Count - 1; i >= 0; i--)
+                {
+                    if (predicate(list[i]))
+                    {
+                        list.RemoveAt(i);
+                    }
+                }
+
+                return list;
             }
 
+            source.Where(predicate)
+                .ToList()
+                .ForEach(x => source.Remove(x));
             return source;
         }
     }
-
 }
