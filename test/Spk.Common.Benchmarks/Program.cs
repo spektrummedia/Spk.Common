@@ -1,13 +1,13 @@
 using BenchmarkDotNet.Running;
-using Spk.Common.Benchmarks.Helpers.IEnumerable;
+using Spk.Common.Benchmarks.Helpers.Collection;
 
 namespace Spk.Common.Benchmarks
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            BenchmarkRunner.Run<ShuffleExtensionBenchmarks>();
+            BenchmarkRunner.Run<RemoveWhereExtensionBenchmarks>();
         }
     }
 }
