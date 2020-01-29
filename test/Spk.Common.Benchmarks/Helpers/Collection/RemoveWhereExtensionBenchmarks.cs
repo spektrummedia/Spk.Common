@@ -26,7 +26,7 @@ namespace Spk.Common.Benchmarks.Helpers.Collection
         [Benchmark]
         public ICollection<string> RemoveWhere_Initial()
         {
-            return _source.RemoveWhereTest(x => x.Contains("1"));
+            return _source.RemoveWhereOld(x => x.Contains("1"));
         }
     }
 }
