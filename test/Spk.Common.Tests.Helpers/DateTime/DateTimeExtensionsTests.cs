@@ -1,3 +1,4 @@
+using System.Linq;
 using Shouldly;
 using Spk.Common.Helpers.DateTime;
 using Xunit;
@@ -104,6 +105,40 @@ namespace Spk.Common.Tests.Helpers.DateTime
             var upper = new System.DateTime(2018, 10, upperDay);
 
             dateUnderTest.IsWithinRange(lower, upper).ShouldBeFalse();
+        }
+
+        [Theory]
+        [InlineData("2022-01-01", "2022-01-04", 2, 2)]
+        [InlineData("2022-01-01", "2022-01-05", 2, 3)]
+        [InlineData("2022-01-01", "2022-01-02", 2, 1)]
+        [InlineData("2022-01-01", "2022-01-30", 15, 2)]
+        [InlineData("2022-01-01", "2022-01-30", 30, 1)]
+        [InlineData("2021-01-01", "2022-01-01", 183, 2)]
+        [InlineData("2021-01-01", null, 10, 1)]
+        public void Chunk_ShouldReturn_TheExpectedNumberOfDateRange_BasedOnChunkSize(string startDate, string endDate, int chunkSizeInDays, int expectedNumberOfChunks)
+        {
+            System.DateTime.TryParse(startDate, out System.DateTime s);
+            System.DateTime.TryParse(endDate, out System.DateTime e);
+
+            var chunks =  s.Chunk(e, chunkSizeInDays);
+
+            chunks.Count().ShouldBe(expectedNumberOfChunks);
+        }
+
+        [Theory]
+        [InlineData("2022-01-01", "2022-01-05", 2)]
+        [InlineData("2022-01-01", "2022-01-30", 15)]
+        [InlineData("2022-01-01", "2022-01-30", 30)]
+        [InlineData("2021-01-01", "2022-01-01", 183)]
+        [InlineData("2021-01-01", null, 10)]
+        public void Chunk_ShouldReturn_RangeSizeLowerOrEqualToChunkSize(string startDate, string endDate, int chunkSizeInDays)
+        {
+            System.DateTime.TryParse(startDate, out System.DateTime s);
+            System.DateTime.TryParse(endDate, out System.DateTime e);
+
+            var chunks = s.Chunk(e, chunkSizeInDays);
+
+            chunks.ShouldAllBe(period => period.Days <= chunkSizeInDays);
         }
     }
 }

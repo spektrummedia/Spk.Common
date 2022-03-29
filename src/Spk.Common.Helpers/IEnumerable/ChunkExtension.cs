@@ -11,14 +11,15 @@ namespace Spk.Common.Helpers.IEnumerable
         /// </summary>
         /// <typeparam name="T">Type of the items in the collections</typeparam>
         /// <param name="elements">The source collection</param>
-        public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> source, int chunksize)
+        /// <param name="chunkSize">The maximal size of each chunk</param>
+        public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> source, int chunkSize)
         {
             source.GuardIsNotNull(nameof(source));
-            chunksize.GuardIsGreaterThan(0, nameof(chunksize));
+            chunkSize.GuardIsGreaterThan(0, nameof(chunkSize));
 
             return source
                 .Select((x, i) => new { Index = i, Value = x })
-                .GroupBy(x => x.Index / chunksize)
+                .GroupBy(x => x.Index / chunkSize)
                 .Select(x => x.Select(v => v.Value).ToList())
                 .ToList();
         }

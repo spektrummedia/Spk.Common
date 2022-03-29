@@ -880,7 +880,49 @@ namespace Spk.Common.Helpers.Guard
         {
             if (argument >= target)
             {
-                throw new ArgumentOutOfRangeException(paramName, $"Must be ealier than {target}");
+                throw new ArgumentOutOfRangeException(paramName, $"Must be earlier than {target}");
+            }
+
+            return argument;
+        }
+
+        /// <summary>
+        /// Guards that <paramref name="argument"/> date is later or equal than <paramref name="target" /> date
+        /// </summary>
+        /// <param name="argument">the argument being guarded</param>
+        /// <param name="target">The date that <paramref name="argument"/> validates against</param>
+        /// <param name="paramName">the name of the param beign tested. This is used when <exception cref="ArgumentOutOfRangeException">throwing</exception></param>
+        /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
+        /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
+        public static System.DateTime GuardIsLaterOrEqualThan(
+            this System.DateTime argument,
+            System.DateTime target,
+            string paramName)
+        {
+            if (argument < target)
+            {
+                throw new ArgumentOutOfRangeException(paramName, $"Must be later or equal than {target}");
+            }
+
+            return argument;
+        }
+
+        /// <summary>
+        /// Guards that <paramref name="argument"/> date is earlier or equal than <paramref name="target" /> date/>
+        /// </summary>
+        /// <param name="argument">the argument being guarded</param>
+        /// <param name="target">The date that <paramref name="argument"/> validates against</param>
+        /// <param name="paramName">the name of the param beign tested. This is used when <exception cref="ArgumentOutOfRangeException">throwing</exception></param>
+        /// <exception cref="ArgumentOutOfRangeException">When test fails</exception>
+        /// <returns>Returns <paramref name="argument"/> as is, when the test succeeds</returns>
+        public static System.DateTime GuardIsEarlierOrEqualThan(
+            this System.DateTime argument,
+            System.DateTime target,
+            string paramName)
+        {
+            if (argument > target)
+            {
+                throw new ArgumentOutOfRangeException(paramName, $"Must be earlier or equal than {target}");
             }
 
             return argument;
