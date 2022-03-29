@@ -138,7 +138,7 @@ namespace Spk.Common.Tests.Helpers.DateTime
 
             var chunks = s.Chunk(e, chunkSizeInDays);
 
-            chunks.ShouldAllBe(period => (period.End - period.Begin).Days <= chunkSizeInDays);
+            chunks.ShouldAllBe(period => period.Days <= chunkSizeInDays);
         }
     }
 }

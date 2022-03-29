@@ -6,6 +6,7 @@ namespace Spk.Common.Helpers.DateTime
     {
         public System.DateTime Begin { get; set; }
         public System.DateTime End { get; set; }
+        public int Days => (End.Date - Begin.Date).Days + 1;
 
         public DateTimePeriod()
         {
