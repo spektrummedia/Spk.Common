@@ -72,6 +72,13 @@ namespace Spk.Common.Helpers.DateTime
             return startDate <= date && date <= endDate;
         }
 
+        /// <summary>
+        /// Returns a list of <see cref="DateTimePeriod" /> of a specific interval length/>
+        /// </summary>
+        /// <param name="startDate">The start <see cref="System.DateTime" /></param>
+        /// <param name="endDate">The end <see cref="System.DateTime" /></param>
+        /// <param name="chunkSizeInDays">The maximal length in days of each chunk</param>
+        /// <returns></returns>
         public static IEnumerable<DateTimePeriod> Chunk(this System.DateTime startDate, System.DateTime endDate, int chunkSizeInDays)
         {
             if (endDate == System.DateTime.MinValue)
