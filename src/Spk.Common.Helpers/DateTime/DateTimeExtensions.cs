@@ -78,20 +78,20 @@ namespace Spk.Common.Helpers.DateTime
                 yield return new DateTimePeriod(startDate, startDate);
             else
             {
-                var i = startDate;
+                var periodStart = startDate;
 
                 do
                 {
-                    var currentEndChunkDate = i.AddDays(chunkSizeInDays - 1);
-                    if (currentEndChunkDate > endDate)
+                    var periodEnd = periodStart.AddDays(chunkSizeInDays - 1);
+                    if (periodEnd > endDate)
                     {
-                        currentEndChunkDate = endDate;
+                        periodEnd = endDate;
                     }
-                    yield return new DateTimePeriod(i, currentEndChunkDate);
+                    yield return new DateTimePeriod(periodStart, periodEnd);
 
-                    i = currentEndChunkDate.AddDays(1);
+                    periodStart = periodEnd.AddDays(1);
                 }
-                while (i <= endDate);
+                while (periodStart <= endDate);
             }
             
         }
