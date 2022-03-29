@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Spk.Common.Helpers.Guard;
 
 namespace Spk.Common.Helpers.DateTime
 {
@@ -67,6 +70,30 @@ namespace Spk.Common.Helpers.DateTime
         public static bool IsWithinRange(this System.DateTime date, System.DateTime startDate, System.DateTime endDate)
         {
             return startDate <= date && date <= endDate;
+        }
+
+        public static IEnumerable<DateTimePeriod> Chunk(this System.DateTime startDate, System.DateTime endDate, int chunkSizeInDays)
+        {
+            if (endDate == System.DateTime.MinValue)
+                yield return new DateTimePeriod(startDate, startDate);
+            else
+            {
+                var i = startDate;
+
+                do
+                {
+                    var currentEndChunkDate = i.AddDays(chunkSizeInDays - 1);
+                    if (currentEndChunkDate > endDate)
+                    {
+                        currentEndChunkDate = endDate;
+                    }
+                    yield return new DateTimePeriod(i, currentEndChunkDate);
+
+                    i = currentEndChunkDate.AddDays(1);
+                }
+                while (i <= endDate);
+            }
+            
         }
     }
 }
